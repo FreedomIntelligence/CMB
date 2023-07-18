@@ -38,7 +38,7 @@ Below are zero-shot and five-shot accuracies from the models that we evaluate in
 
 ### Five-shot
 
-### Results After trained on [Huatuo-Flan]()
+### Results After trained on [Huatuo-Flan](https://github.com/FreedomIntelligence/Huatuo-Flan)
 
 
 
