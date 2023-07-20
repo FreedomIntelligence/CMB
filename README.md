@@ -1,4 +1,4 @@
-# CMB Chinese-Medical-Benchamrk 
+# CMB Chinese-Medical-Benchmark 
 <p align="center">
    🌐 <a href="" target="_blank">Website</a> • 🤗 <a href="" target="_blank">Hugging Face</a> • 📃 <a href="" target="_blank">Paper</a>  <br>  <a href="">   中文</a> | <a href="">English 
 </p>
