@@ -3,7 +3,7 @@
    🌐 <a href="" target="_blank">Website</a> • 🤗 <a href="" target="_blank">Hugging Face</a> • 📃 <a href="" target="_blank">Paper</a>  <br>  <a href="">   中文</a> | <a href="">English 
 </p>
 
-## News
+## 更新
 
 * **[2023.07.23]**  CMB公开！感谢支持~
 
