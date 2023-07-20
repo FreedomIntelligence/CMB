@@ -5,7 +5,7 @@
 
 ## News
 
-* **[2023.07.23]**  CMB Chinese-Medical-Benchmark 放出！感谢支持~
+* **[2023.07.23]**  CMB公开！感谢支持~
 
 
 ## 数据下载
