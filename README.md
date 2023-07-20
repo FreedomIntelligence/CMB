@@ -43,7 +43,7 @@
 - 小项分类依据：不同的医学相关职业等级(详见[目录](catalog.md)) [部分区分了中西医] 
 - 完整题目汇总为 xxxx-merge.json ; 目录结构为 xxxx-hierarchy.json
 
-### CMB-Test & Train & Zhenti Item 
+### CMB-Test & Train & Exampaper Item 
 ```json
 {
     "exam_type": "医师考试",
@@ -99,7 +99,7 @@
 
 ## CMB评测细节
 
-### CMB Test & Train & Zhenti Prompt
+### CMB Test & Train & Exampaper Prompt
 CMB-test Item [样例]()
 #### Answer-only Prompt
 ```
