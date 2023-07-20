@@ -20,40 +20,42 @@ Below are zero-shot and five-shot accuracies from the models that we evaluate in
 - Method 1: Download the zip file (you can also simply open the following link with the browser):
 - Method 2: Directly load the dataset using [Hugging Face datasets]():
   
-### 组成部分
-CMB-test: CMB医疗模型能力测评数据集
-- 数据量: 6大项28小项，每一个小项400道题，共11200道，含单选和多选题;
-- 评价依据：准确率排名;
-- 目的：多方位测评模型能力;
+### Component
+CMB-test: CMB Medical Model Ability Evaluation Dataset
+- Data volume: 6 major items and 28 sub-items, each with 400 questions, a total of 11,200 questions, including single-choice and multiple-choice questions;
+- Evaluation basis: accuracy ranking;
+- Purpose: Multi-faceted evaluation of model capabilities;
 
-CME-test-qa: CMB真实病例诊断能力测评数据集
-- 数据量: 73个详细教科书级病例 以及诊断问题;
-- 评价依据：专业医生人工评价;
-- 目的：评价模型是否具有临床问诊能力;
+CME-test-qa: CMB Real Case Diagnostic Ability Evaluation Dataset
+- Data volume: 73 detailed textbook cases and diagnostic questions;
+- Evaluation basis: manual evaluation by professional doctors;
+- Purpose: To evaluate whether the model has clinical inquiry ability;
 
-CMB-test-zhenti: CMB真题测评数据集
-- 数据量：3大项9小项，26套题目，共7051道题;
-- 评价依据：模型是否通过考试(60分);
-- 目的：评测模型是否可以部署使用;
+CMB-test-zhenti: CMB test test dataset
+- Data volume: 3 major items and 9 minor items, 26 sets of questions, a total of 7051 questions;
+- Evaluation basis: whether the model passes the test (60 points);
+- Purpose: To evaluate whether the model can be deployed;
 
-CMB-val: CMB Few-shot数据(附带详细解析)
-- 数据量：每个小项有10道，共280道;
-- 目的：Few Shot;
+CMB-val: CMB Few-shot data (with detailed analysis)
+- Data volume: each sub-item has 10 tracks, a total of 280 tracks;
+- Purpose: Few Shot;
 
-CMB-train: CMB训练数据集
-- 数据量：6大项28小项，共304734道题，含单选和多选题，详见/CMB-train/CMB-train-hierarchy.json;
-- 目的：模型医疗知识注入
+CMB-train: CMB training dataset
+- Data volume: 6 major items and 28 minor items, a total of 304,734 questions, including single-choice and multiple-choice questions, see /CMB-train/CMB-train-hierarchy.json for details;
+- Purpose: model medical knowledge injection
 
-### 目录结构
-- 大项分类依据：不同的临床工种，和特殊考试 [医学考研题目] [学科知识点考察题目]
+### Directory Structure
+- Classification basis for major items: different types of clinical work, and special examinations [Medical postgraduate entrance examination questions] [Subject knowledge points inspection questions]
 
-- 小项分类依据：不同的医学相关职业等级(详见[等级目录](catalog.md)) [部分区分了中西医] 
+- Classification basis for small items: different medical-related occupational grades (see [Grade Catalog](catalog.md) for details) [some distinctions between Chinese and Western medicine]
 
-- 完整题目汇总为 xxxx-merge.json ; 目录结构为 xxxx-hierarchy.json
+- The complete topic summary is xxxx-merge.json; the directory structure is xxxx-hierarchy.json
+  
 
-### 内容介绍
 
-#### CMB-Test & Train & Zhenti Item介绍
+### Introduction
+
+#### CMB-Test & Train & Zhenti Item 
 ```json
 {
     "exam_type": "医师考试",
@@ -71,12 +73,12 @@ CMB-train: CMB训练数据集
     }
 },
 ```
-- exam_type: 大项分类; 不同的临床工种，和特殊考试 [医学考研题目] [学科知识点考察题目];
-- exam_class: 小项分类; 不同的医学相关职业等级(详见[等级目录](catalog.md)) [部分区分了中西医];
-- exam_subject: 具体科室或细分学科分类; 
-- question_type: 只有"单项选择题"和"多项选择题";
+- exam_type: classification of major items; different types of clinical work, and special exams [medical postgraduate entrance examination questions] [subject knowledge points inspection questions];
+- exam_class: subcategory; different medical-related occupational grades (see [level catalog](catalog.md) for details) [partially distinguishes between Chinese and Western medicine];
+- exam_subject: specific department or subdivision;
+- question_type: only "单项选择题" and "多项选择题";
 
-#### CMB-qa Item 介绍
+#### CMB-qa Item 
 ```json
 {
     "id": "0",
@@ -98,18 +100,18 @@ CMB-train: CMB训练数据集
     ]
 }
 ```
-- title: 病例疾病名称;
-- description: 病例信息;
-- QA_pairs: 一系列诊断问题和对应标准回答;
+- title: case disease name;
+- description: case information;
+- QA_pairs: a series of diagnostic questions and corresponding standard answers;
 
 
 ## How to Evaluate and Submit on CMB
 
 
-## CMB测评细节
+## CMB Evaluation Details
 
-### CMB Test & Train & Zhenti 提问方式
-CMB-test Item[样例说明]()
+### CMB Test & Train & Zhenti Prompt
+CMB-test Item[Sample description]()
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -152,9 +154,8 @@ B. {选项B}
 <{Role_2}>：
 ```
 
-
-### CMB-qa 提问方式
-CMB-test-qa item[样例说明]()
+### CMB-qa Prompt
+CMB-test-qa item[Sample description]()
 ```
 {System_prompt}
 <{Role_1}>：以下是一位病人的病例：
@@ -163,17 +164,6 @@ CMB-test-qa item[样例说明]()
 <{Role_2}>：..........
 [n-question based on the len(QA_pairs)]
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Licenses
