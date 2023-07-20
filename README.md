@@ -100,7 +100,7 @@
 ## CMB评测细节
 
 ### CMB Test & Train & Zhenti Prompt
-CMB-test Item [Sample description]()
+CMB-test Item [样例]()
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -144,7 +144,7 @@ B. {选项B}
 ```
 
 ### CMB-qa Prompt
-CMB-test-qa item [Sample description]()
+CMB-test-qa Item [样例]()
 ```
 {System_prompt}
 <{Role_1}>：以下是一位病人的病例：
