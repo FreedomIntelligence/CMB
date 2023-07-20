@@ -160,9 +160,9 @@ CMB-test-qa Item [样例]()
 
 
 
-## 感谢您的引用和支持
+## 引用
 
-Please cite our paper if you use our dataset.
+如果您使用我们的数据集，请引用我们的论文。
 ```
 
 ```
