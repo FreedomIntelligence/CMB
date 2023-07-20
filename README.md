@@ -53,7 +53,7 @@ CMB-train: CMB训练数据集
 
 ### 内容介绍
 
-#### Test & Train & Zhenti Item介绍
+#### CMB-Test & Train & Zhenti Item介绍
 ```json
 {
     "exam_type": "医师考试",
@@ -76,7 +76,7 @@ CMB-train: CMB训练数据集
 - exam_subject: 具体科室或细分学科分类; 
 - question_type: 只有"单项选择题"和"多项选择题";
 
-#### qa Item 介绍
+#### CMB-qa Item 介绍
 ```json
 {
     "id": "0",
@@ -109,7 +109,7 @@ CMB-train: CMB训练数据集
 ## CMB测评细节
 
 ### CMB Test & Train & Zhenti 提问方式
-CMB-test item[样例说明]()
+CMB-test Item[样例说明]()
 #### Answer-only Prompt
 ```
 {System_prompt}
