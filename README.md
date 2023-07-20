@@ -104,6 +104,7 @@ CMB-test Item [样例]()
 #### Answer-only Prompt
 ```
 {System_prompt}
+
 <{Role_1}>：以下是中国{exam_type}中{exam_class}考试的一道{question_type}，不需要做任何分析和解释，直接输出答案选项。。
 {题目}
 A. {选项A}
@@ -113,7 +114,6 @@ B. {选项B}
 
 [n-shot demo, n is 0 for the zero-shot case]
 
-{System_prompt}
 <{Role_1}>：以下是中国{exam_type}中{exam_class}考试的一道{question_type}，不需要做任何分析和解释，直接输出答案选项。
 {题目}
 A. {选项A}
@@ -125,6 +125,7 @@ B. {选项B}
 
 ```
 {System_prompt}
+
 <{Role_1}>：以下是中国{exam_type}中{exam_class}考试的一道{question_type}，请分析每个选项，并最后给出答案。
 {题目}
 A. {选项A}
@@ -134,7 +135,6 @@ B. {选项B}
 
 [n-shot demo, n is 0 for the zero-shot case]
 
-{System_prompt}
 <{Role_1}>：以下是中国{exam_type}中{exam_class}考试的一道{question_type}，请分析每个选项，并最后给出答案。
 {题目}
 A. {选项A}
@@ -147,6 +147,7 @@ B. {选项B}
 CMB-test-qa Item [样例]()
 ```
 {System_prompt}
+
 <{Role_1}>：以下是一位病人的病例：
 {description}
 {QA_pairs[0]['question']}
