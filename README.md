@@ -19,39 +19,6 @@ Below are zero-shot and five-shot accuracies from the models that we evaluate in
 ### Download
 - Method 1: Download the zip file (you can also simply open the following link with the browser):
 - Method 2: Directly load the dataset using [Hugging Face datasets]():
-  
-### Component
-CMB-test: CMB Medical Model Ability Evaluation Dataset
-- Data volume: 6 major items and 28 sub-items, each with 400 questions, a total of 11,200 questions, including single-choice and multiple-choice questions;
-- Evaluation basis: accuracy ranking;
-- Purpose: Multi-faceted evaluation of model capabilities;
-
-CME-test-qa: CMB Real Case Diagnostic Ability Evaluation Dataset
-- Data volume: 73 detailed textbook cases and diagnostic questions;
-- Evaluation basis: manual evaluation by professional doctors;
-- Purpose: To evaluate whether the model has clinical inquiry ability;
-
-CMB-test-zhenti: CMB test test dataset
-- Data volume: 3 major items and 9 minor items, 26 sets of questions, a total of 7051 questions;
-- Evaluation basis: whether the model passes the test (60 points);
-- Purpose: To evaluate whether the model can be deployed;
-
-CMB-val: CMB Few-shot data (with detailed analysis)
-- Data volume: each sub-item has 10 tracks, a total of 280 tracks;
-- Purpose: Few Shot;
-
-CMB-train: CMB training dataset
-- Data volume: 6 major items and 28 minor items, a total of 304,734 questions, including single-choice and multiple-choice questions, see /CMB-train/CMB-train-hierarchy.json for details;
-- Purpose: model medical knowledge injection
-
-### Directory Structure
-- Classification basis for major items: different types of clinical work, and special examinations [Medical postgraduate entrance examination questions] [Subject knowledge points inspection questions]
-
-- Classification basis for small items: different medical-related occupational grades (see [Grade Catalog](catalog.md) for details) [some distinctions between Chinese and Western medicine]
-
-- The complete topic summary is xxxx-merge.json; the directory structure is xxxx-hierarchy.json
-  
-
 
 ### Introduction
 
@@ -104,6 +71,38 @@ CMB-train: CMB training dataset
 - description: case information;
 - QA_pairs: a series of diagnostic questions and corresponding standard answers;
 
+### Component
+CMB-test: CMB Medical Model Ability Evaluation Dataset
+- Data volume: 6 major items and 28 sub-items, each with 400 questions, a total of 11,200 questions, including single-choice and multiple-choice questions;
+- Evaluation basis: accuracy ranking;
+- Purpose: Multi-faceted evaluation of model capabilities;
+
+CME-test-qa: CMB Real Case Diagnostic Ability Evaluation Dataset
+- Data volume: 73 detailed textbook cases and diagnostic questions;
+- Evaluation basis: manual evaluation by professional doctors;
+- Purpose: To evaluate whether the model has clinical inquiry ability;
+
+CMB-test-zhenti: CMB test test dataset
+- Data volume: 3 major items and 9 minor items, 26 sets of questions, a total of 7051 questions;
+- Evaluation basis: whether the model passes the test (60 points);
+- Purpose: To evaluate whether the model can be deployed;
+
+CMB-val: CMB Few-shot data (with detailed analysis)
+- Data volume: each sub-item has 10 tracks, a total of 280 tracks;
+- Purpose: Few Shot;
+
+CMB-train: CMB training dataset
+- Data volume: 6 major items and 28 minor items, a total of 304,734 questions, including single-choice and multiple-choice questions, see /CMB-train/CMB-train-hierarchy.json for details;
+- Purpose: model medical knowledge injection
+
+### Directory Structure
+- Classification basis for major items: different types of clinical work, and special examinations [Medical postgraduate entrance examination questions] [Subject knowledge points inspection questions]
+
+- Classification basis for small items: different medical-related occupational grades (see [Grade Catalog](catalog.md) for details) [some distinctions between Chinese and Western medicine]
+
+- The complete topic summary is xxxx-merge.json; the directory structure is xxxx-hierarchy.json
+
+
 
 ## How to Evaluate and Submit on CMB
 
@@ -111,7 +110,7 @@ CMB-train: CMB training dataset
 ## CMB Evaluation Details
 
 ### CMB Test & Train & Zhenti Prompt
-CMB-test Item[Sample description]()
+CMB-test Item [Sample description]()
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -155,7 +154,7 @@ B. {选项B}
 ```
 
 ### CMB-qa Prompt
-CMB-test-qa item[Sample description]()
+CMB-test-qa item [Sample description]()
 ```
 {System_prompt}
 <{Role_1}>：以下是一位病人的病例：
