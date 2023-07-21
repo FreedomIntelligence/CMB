@@ -38,29 +38,23 @@
 ### 组成部分
 - CMB-main  
    - CMB-test: CMB医疗模型能力测评数据集———11200道题目
-      - 数据量: 6大项28小项，详见[目录](catalog.md), 每一个小项400道题;
-      - 评价依据：准确率排名;
-      - 目的：多方位测评模型能力;
-  - CMB-val: CMB Few-shot数据——280道详细解析题目
-      - 数据量：每个小项有10道，共280道;
-      - 目的：Few Shot;
+   - CMB-val: CMB Few-shot数据——280道详细解析题目
    - CMB-train: CMB训练数据集——304743道题目
-      - 数据量：6大项28小项，详见[目录](catalog.md);
-      - 目的：模型医疗知识注入;
-- CME-test-qa: CMB真实病例诊断能力测评数据集———73个教科书级详细病例以及诊断
+      - 种类: 6大项28小项，详见[目录](catalog.md);
+      - 评价依据：回答准确率排名
+      - 数据量：
+         - test: 每个小项有400道，共11200道；多方位测评模型能力;
+         - val: 每个小项有10道带详细解析题目，共280道; Few Shot数据集；
+         - train: 304743道题目; 模型医疗知识注入;
+- CME-test-qa: CMB真实病例诊断能力测评数据集
    - 数据量: 73个详细教科书级病例 以及诊断问题;
    - 评价依据：专业医生人工评价;
-   - 目的：评价模型是否具有临床问诊能力;
+   - 目的：评价模型是否具有复杂临床问诊能力;
 - CMB-test-exampaper: CMB真题测评数据集——7051道题目
-   - 数据量：9小项，26套题目，详见[真题目录](exam-catalog.md);
+   - 数据量：9小项，26套共7051道题目，详见[真题目录](exam-catalog.md);
    - 评价依据：模型是否通过考试(60分);
-   - 目的：评测模型是否可以部署使用;
+   - 目的：为模型是否可以部署使用提供一个参考指标;
 
-
-### 目录结构 [目录](catalog.md)
-- 大项分类依据：不同的临床工种，和特殊考试 (详见[目录](catalog.md)) [医学考研题目] [学科知识点考察题目]
-- 小项分类依据：不同的医学相关职业等级(详见[目录](catalog.md)) [部分区分了中西医] 
-- 完整题目汇总为 xxxx-merge.json ; 目录结构为 xxxx-hierarchy.json
 
 ### CMB-Test & Train & Exampaper Item 
 ```json
@@ -80,8 +74,8 @@
     }
 },
 ```
-- exam_type: 大项分类; 不同的临床工种，和特殊考试 (详见[目录](catalog.md)) [医学考研题目] [学科知识点考察题目];
-- exam_class: 小项分类; 不同的医学相关职业等级(详见[目录](catalog.md)) [部分区分了中西医];
+- exam_type: 大项分类; 
+- exam_class: 小项分类; 
 - exam_subject: 具体科室或细分学科分类; 
 - question_type: 只有"单项选择题"和"多项选择题";
 
@@ -227,7 +221,7 @@ bash score_exam.sh # 医疗模型能力测评数据集
 bash score_test.sh # 真题测评数据集
 ```
 
-### 提交结果
+### 提交结果   
 将 [开始评测](###开始评测) 中 **Step 1** 在**测试集**的输出文件提交至xxx，我们将在第一时间更新排行榜。
 
 
@@ -235,7 +229,7 @@ bash score_test.sh # 真题测评数据集
 ## ✅  CMB评测细节
 
 ### CMB Test & Train & Exampaper Prompt
-CMB-test Item [样例]()
+CMB-test [Item](### CMB-Test & Train & Exampaper Item)
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -279,7 +273,7 @@ B. {选项B}
 ```
 
 ### CMB-qa Prompt
-CMB-test-qa Item [样例]()
+CMB-test-qa Item [Item](### CMB-qa Item) 
 ```
 {System_prompt}
 
