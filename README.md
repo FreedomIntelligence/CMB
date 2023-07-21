@@ -221,7 +221,7 @@ bash score_test.sh # 真题测评数据集
 ## ✅  CMB评测细节
 
 ### CMB Test & Train & Exampaper Prompt
-[CMB-main Item](###-cmb-main-&-cme-exampaper-item)
+[CMB-main Item](#cmb-main--cme-exampaper-item)
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -265,7 +265,7 @@ B. {选项B}
 ```
 
 ### CMB-qa Prompt
-[CMB-qa Item](###-cmb-qa-item) 
+[CMB-qa Item](#cmb-qa-item) 
 ```
 {System_prompt}
 
