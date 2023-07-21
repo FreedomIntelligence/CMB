@@ -12,6 +12,14 @@
 - 方法一：直接下载使用[zip压缩文件]()
 - 方法二：使用[Hugging Face datasets]()直接加载数据集 示例如下:
   ```python
+  from datasets import load_dataset
+  
+  # main datasets （multiple choice）
+  main_datasets = load_dataset('FreedomIntelligence/CMB','main')
+  # exam paper datasets （multiple choice）
+  exam_datasets = load_dataset('FreedomIntelligence/CMB','exampaper')
+  # QA datasets
+  qa_datasets = load_dataset('FreedomIntelligence/CMB','qa')
   ```
 ## 排行榜
 我们在初始版本中进行评估的模型的zero-shot和five-shot准确率，请访问我们[官方排行榜]()了解详细结果。
@@ -105,14 +113,14 @@
 ```
 my_model:
     model_id: 'my_model'
-    system_template: "病人：{instruction}\n医生：" # system prompt。可以为空字符串；如果非空，则必须带有 `{instruction}` 的placeholder
+    system_template: "病人：{instruction}\n医生：" # system prompt，可为空字符串；如非空，则必须带有 `{instruction}` 的placeholder
     load:
         # HuggingFace模型权重文件夹
-        config_dir: "/mntcephfs/data/med/guimingchen/models/med/bianque-2"
+        config_dir: "path/to/full/model"
 
         # 使用peft加载LoRA模型
-        # llama_dir: "/mntcephfs/data/med/guimingchen/models/med/zhixi-13b"
-        # lora_dir: "/mntcephfs/data/med/guimingchen/models/med/qizhen-lora"
+        # llama_dir: "path/to/base"
+        # lora_dir: "path/to/lora"
 
         device: 'cuda'          # 当前仅支持cuda
         precision: 'fp16'       # 推理精度，支持 fp16, fp32
