@@ -9,8 +9,8 @@
 
 
 ## 数据下载
-- 方法一：直接下载使用[zip压缩文件]()
-- 方法二：使用[Hugging Face datasets]()直接加载数据集 示例如下:
+- 方法一：直接下载使用[zip压缩文件](https://github.com/FreedomIntelligence/CMB/tree/main/data)
+- 方法二：使用[Hugging Face datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB)直接加载数据集 示例如下:
   ```python
   from datasets import load_dataset
   
