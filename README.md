@@ -42,9 +42,9 @@
    - CMB-val: 280道附带详细解析的题目; Few Shot数据集;
    - CMB-train: 304743道题目; 模型医疗知识注入;
     
-- CME-test-qa: 测评复杂临床问诊能力
+- CME-qa: 测评复杂临床问诊能力
    - 数据: 73例复杂病例问诊;
-- CMB-test-exampaper: 测评模型是否通过考试
+- CMB-exampaper: 测评模型是否通过考试
    - 数据: 9小项，26套共7051道题目，详见[真题目录](exam-catalog.md);
 
 
