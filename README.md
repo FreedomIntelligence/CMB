@@ -1,7 +1,8 @@
 # CMB Chinese-Medical-Benchmark 
 <p align="center">
-   🌐 <a href="" target="_blank">Website</a> • 🤗 <a href="" target="_blank">Hugging Face</a> • 📃 <a href="" target="_blank">Paper</a>  <br>  <a href="">   中文</a> | <a href="">English 
+   🌐 <a href="" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">Hugging Face</a> • 📃 <a href="" target="_blank">Paper</a>  <br>  <a href="https://github.com/FreedomIntelligence/CMB">   中文</a> | <a href="">English 
 </p>
+
 
 ## 更新
 
