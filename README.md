@@ -48,7 +48,7 @@
    - 数据: 9小项，26套共7051道题目，详见[真题目录](exam-catalog.md);
 
 
-### CMB-Test & Train & Exampaper Item 
+### CMB-main & CME-exampaper Item 
 ```json
 {
     "exam_type": "医师考试",
@@ -221,7 +221,7 @@ bash score_test.sh # 真题测评数据集
 ## ✅  CMB评测细节
 
 ### CMB Test & Train & Exampaper Prompt
-[CMB-Test & Train & Exampaper Item](### CMB-Test & Train & Exampaper Item)
+[CMB-main Item](###-cmb-main-&-cme-exampaper-item)
 #### Answer-only Prompt
 ```
 {System_prompt}
@@ -265,7 +265,7 @@ B. {选项B}
 ```
 
 ### CMB-qa Prompt
-[CMB-qa Item](### CMB-qa Item) 
+[CMB-qa Item](###-cmb-qa-item) 
 ```
 {System_prompt}
 
