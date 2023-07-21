@@ -96,7 +96,122 @@
 
 
 
+
+
 ## 如何进行评测和提交
+
+### 修改模型配置文件
+`configs/model_config.yaml` 示例如下：
+```
+my_model:
+    model_id: 'my_model'
+    system_template: "病人：{instruction}\n医生：" # system prompt。可以为空字符串；如果非空，则必须带有 `{instruction}` 的placeholder
+    load:
+        # HuggingFace模型权重文件夹
+        config_dir: "/mntcephfs/data/med/guimingchen/models/med/bianque-2"
+
+        # 使用peft加载LoRA模型
+        # llama_dir: "/mntcephfs/data/med/guimingchen/models/med/zhixi-13b"
+        # lora_dir: "/mntcephfs/data/med/guimingchen/models/med/qizhen-lora"
+
+        device: 'cuda'          # 当前仅支持cuda
+        precision: 'fp16'       # 推理精度，支持 fp16, fp32
+
+    # inference解码超参,支持 transformers.GenerationConfig 的所有参数
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+    # inference batch_size
+    batch_size: 2
+```
+
+
+### 添加模型加载代码
+Step 1: 在 `ModelLoader` 类中**添加**如下函数：
+```
+class ModelLoader():
+    def load_my_model_and_tokenizer(self):
+        config = self.config
+        model_id = self.model_id
+        assert config.get(model_id), f'{model_id} is not configured in configs/model_config.yaml'
+        load_config = config.get(model_id).load
+
+
+        # 根据需要修改
+        hf_model_config = {
+            "pretrained_model_name_or_path": load_config['config_dir'], 
+            'trust_remote_code': True, 
+            'low_cpu_mem_usage': True
+        }
+        hf_tokenizer_config = {
+            "pretrained_model_name_or_path": load_config['config_dir'], 
+            'padding_side': 'left', 
+            'trust_remote_code': True
+        }
+        model = AutoModelForCausalLM.from_pretrained(**hf_model_config).half()
+        tokenizer = AutoTokenizer.from_pretrained(**hf_tokenizer_config)
+        # model = PeftModel.from_pretrained(model, load_config['lora_dir'], torch_dtype=torch.float16)
+
+        # 返回 model 和 tokenizer，注意模型需要在cpu上
+        return model, tokenizer
+```
+
+Step 2: 在 `LLMZooRunner.init_model_and_tokenizer()` 中，将
+```
+self.model, self.tokenizer, config = model_loader.load_model_and_tokenizer()
+```
+替换为
+```
+self.model, self.tokenizer, config = model_loader.load_my_model_and_tokenizer()
+```
+
+
+
+### 修改运行配置文件
+`generate_answers.sh` 示例如下：
+
+```
+# # 输入文件路径
+# test_data_path='./data/CMB-main/CMB-test/CMB-test-choice-question-merge.json'   # 医疗模型能力测评数据集
+# test_data_path='./data/CMB-test-exampaper/CMB-test-exam-merge.json'             # 真题测评数据集
+# test_data_path='./data/CMB-test-qa/CMB-test-qa.json'                            # 真实病例诊断能力测评数据集
+
+
+task_name='Zero-test-cot'   
+port_id=27272
+
+model_id="my_model"                                                      # 模型id，应与`./configs/model_config.yaml` 中添加的model_id保持一致
+
+accelerate launch \
+    --gpu_ids='all' \                                                   # 使用所有可用GPU
+    --main_process_port $port_id \                                      # 端口
+    --config_file ./configs/accelerate_config.yaml  \                   # accelerate 配置文件路径
+    ./src/generate_answers.py \                                         # 主程序
+    --model_id=$model_id \                                              # 模型ID
+    --cot_flag \                                                        # 是否使用CoT prompt模板                                   
+    --input_path=$test_data_path \                                      # 输入文件路径
+    --output_path=./result/${task_name}/${model_id}/answers.json \      # 输出文件路径
+    --model_config_path="./configs/model_config.yaml"                   # 模型配置文件路径
+```
+
+
+### 开始评测
+
+Step 1: 生成回答 + 抽取答案
+```
+bash generate_answers.sh
+```
+
+Step 2: 计算得分
+```
+bash score_exam.sh # 医疗模型能力测评数据集
+bash score_test.sh # 真题测评数据集
+```
+
+### 提交结果
+将 [开始评测](###开始评测) 中 **Step 1** 在**测试集**的输出文件提交至xxx，我们将在第一时间更新排行榜。
 
 
 ## CMB评测细节
