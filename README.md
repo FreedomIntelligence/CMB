@@ -105,14 +105,14 @@
 ```
 my_model:
     model_id: 'my_model'
-    system_template: "病人：{instruction}\n医生：" # system prompt。可以为空字符串；如果非空，则必须带有 `{instruction}` 的placeholder
+    system_template: "病人：{instruction}\n医生：" # system prompt，可为空字符串；如非空，则必须带有 `{instruction}` 的placeholder
     load:
         # HuggingFace模型权重文件夹
-        config_dir: "/mntcephfs/data/med/guimingchen/models/med/bianque-2"
+        config_dir: "path/to/full/model"
 
         # 使用peft加载LoRA模型
-        # llama_dir: "/mntcephfs/data/med/guimingchen/models/med/zhixi-13b"
-        # lora_dir: "/mntcephfs/data/med/guimingchen/models/med/qizhen-lora"
+        # llama_dir: "path/to/base"
+        # lora_dir: "path/to/lora"
 
         device: 'cuda'          # 当前仅支持cuda
         precision: 'fp16'       # 推理精度，支持 fp16, fp32
