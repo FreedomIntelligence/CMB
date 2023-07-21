@@ -4,12 +4,14 @@
 </p>
 
 
-## 更新
+## 🌈 更新
 
-* **[2023.07.23]**  CMB公开！感谢支持~
+* **[2023.07.23]** 🎉🎉🎉 CMB公开！感谢支持~🎉🎉🎉
 
 
-## 数据下载
+
+## 🌐 数据下载
+
 - 方法一：直接下载使用[zip压缩文件](https://github.com/FreedomIntelligence/CMB/tree/main/data)
 - 方法二：使用[Hugging Face datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB)直接加载数据集 示例如下:
   ```python
@@ -22,11 +24,17 @@
   # QA datasets
   qa_datasets = load_dataset('FreedomIntelligence/CMB','qa')
   ```
-## 排行榜
+
+
+
+## 🥇 排行榜
+
 我们在初始版本中进行评估的模型的zero-shot和five-shot准确率，请访问我们[官方排行榜]()了解详细结果。
 
 
-## 数据集介绍
+
+## 🥸 数据集介绍
+
 ### 组成部分
 - CMB-main  
    - CMB-test: CMB医疗模型能力测评数据集———11200道题目
@@ -107,7 +115,7 @@
 
 
 
-## 如何进行评测和提交
+## ℹ️ 如何进行评测和提交
 
 ### 修改模型配置文件
 `configs/model_config.yaml` 示例如下：
@@ -223,7 +231,8 @@ bash score_test.sh # 真题测评数据集
 将 [开始评测](###开始评测) 中 **Step 1** 在**测试集**的输出文件提交至xxx，我们将在第一时间更新排行榜。
 
 
-## CMB评测细节
+
+## ✅  CMB评测细节
 
 ### CMB Test & Train & Exampaper Prompt
 CMB-test Item [样例]()
@@ -282,12 +291,13 @@ CMB-test-qa Item [样例]()
 ```
 
 
-## 许可证
+
+## ⚡️ 许可证
 
 
 
 
-## 引用
+## 😘  引用
 
 如果您使用我们的数据集，请引用我们的论文。
 ```
