@@ -45,7 +45,7 @@
 - CME-qa: 测评复杂临床问诊能力
    - 数据: 73例复杂病例问诊;
 - CMB-exampaper: 测评模型是否通过考试
-   - 数据: 9小项，26套共7051道题目，详见[真题目录](exam-catalog.md);
+   - 数据: 9小项，26套共7051道题目，详见[套题目录](exam-catalog.md);
 
 
 ### CMB-main & CME-exampaper Item 
