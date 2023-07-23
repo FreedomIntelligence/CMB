@@ -100,7 +100,7 @@ qizhen-cama-13b: # qizhen-13b
 chatmed-consult:
     model_id: 'chatmed-consult'
     load:
-        llama_dir: "/mntcephfs/data/med/guimingchen/models/general/chinese-llama-alpaca-plus-lora-7b" # huggingface llama
+        llama_dir: "/mntcephfs/data/med/guimingchen/models/general/chinese-llama-alpaca-plus-lora-7b"
         lora_dir: "/mntcephfs/data/med/guimingchen/models/med/chatmed-consult"
         device: 'cuda'        
         precision: 'fp16'
