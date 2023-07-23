@@ -1,0 +1,124 @@
+
+huatuo:
+    model_id: "huatuo"
+    load:
+        config_dir: "/mntcephfs/data/med/zhanghongbo/yaojishi/ckpts/baichuan_all-book-tiku-pretrain_sft_v5_reverse_clean/latest_tfmr"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+huatuo-chat: # the public version on HF 
+    model_id: "huatuo-chat"
+    load:
+        config_dir: "/mntcephfs/data/med/zhanghongbo/download_huatuogpt_7b"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+
+doctorglm:
+    model_id: 'doctorglm'
+    load:
+        config_dir: /mntcephfs/data/med/zhanghongbo/chatglm-6b
+        prefix_config_dir: /mntcephfs/data/med/zhanghongbo/DoctorGLM/Doctor_GLM/ckpt/ptuningv2/ptuningv2/pytorch_model.bin
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1      
+        do_sample: False         
+
+
+
+bentsao:
+    model_id: "bentsao"
+    load:
+        llama_dir: "/mntcephfs/data/med/zhihong/workspace/chimera/llama_hf_7b" # huggingface llama
+        lora_dir: "/mntcephfs/data/med/zhanghongbo/Huatuo-Llama-Med-Chinese/lora-llama-med"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False     
+        # temperature: 0.1
+        # top_p: 0.75
+        # top_k: 40
+        # num_beams: 4
+        # min_new_tokens: 20
+        # max_new_tokens: 256  
+
+
+bianque-v2:
+    model_id: 'bianque-v2'
+    load:
+        config_dir: "/mntcephfs/data/med/guimingchen/models/med/bianque-2"
+        device: 'cuda'          # ['cuda', 'cpu', 'mps']
+        precision: 'fp16'
+    generation_config: # pass any huggingface generation configs here
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+
+chatglm-med:
+    model_id: 'chatglm-med'
+    load:
+        config_dir: "/mntcephfs/data/med/guimingchen/models/med/ChatGLM-Med"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+
+qizhen-cama-13b: # qizhen-13b
+    model_id: 'qizhen-cama-13b'
+    load:
+        llama_dir: "/mntcephfs/data/med/guimingchen/models/med/zhixi-13b"
+        lora_dir: "/mntcephfs/data/med/guimingchen/models/med/qizhen-lora"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+
+chatmed-consult:
+    model_id: 'chatmed-consult'
+    load:
+        llama_dir: "/mntcephfs/data/med/guimingchen/models/general/chinese-llama-alpaca-plus-lora-7b" # huggingface llama
+        lora_dir: "/mntcephfs/data/med/guimingchen/models/med/chatmed-consult"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
+
+
+medicalgpt:
+    model_id: 'medicalgpt'
+    load:
+        config_dir: "/mntcephfs/data/med/guimingchen/models/med/medicalgpt"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False         
+
