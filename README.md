@@ -198,7 +198,7 @@ accelerate launch \
     ./src/generate_answers.py \                                         # 主程序
     --model_id=$model_id \                                              # 模型ID
     --cot_flag \                                                        # 是否使用CoT prompt模板                                   
-    --batch_size \                                                      # 推理的batch size                                 
+    --batch_size 3\                                                      # 推理的batch size                                 
     --input_path=$test_data_path \                                      # 输入文件路径
     --output_path=./result/${task_name}/${model_id}/answers.json \      # 输出文件路径
     --model_config_path="./configs/model_config.yaml"                   # 模型配置文件路径
