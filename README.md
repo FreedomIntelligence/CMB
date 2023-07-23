@@ -225,7 +225,7 @@ bash score_test.sh # 真题测评数据集
 
 
 ## ✅  CMB评测细节
-
+Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy Decoding。
 ### CMB Test & Train & Exampaper Prompt
 [CMB-main Item](#cmb-main--cme-exampaper-item)
 #### Answer-only Prompt
