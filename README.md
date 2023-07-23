@@ -284,14 +284,17 @@ B. {选项B}
 
 
 
-## ⚡️ 许可证
-
-
-
 
 ## 😘  引用
 
 如果您使用我们的数据集，请引用我们的论文。
 ```
-
+@misc{llm-zoo-2023,
+  title={CMB: Chinese Medical Benchmark},
+  author={Xidong Wang*, Guiming Hardy Chen*, Dingjie Song*, Zhiyi Zhang*, Qingying Xiao, Xiangbo Wu, Feng Jiang, Jianquan Li, Benyou Wang},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/FreedomIntelligence/CMB}},
+}
 ```
