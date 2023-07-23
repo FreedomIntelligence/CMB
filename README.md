@@ -297,6 +297,7 @@ B. {选项B}
   howpublished = {\url{https://github.com/FreedomIntelligence/CMB}},
 }
 
+```
+
 ## 致谢
 感谢[深圳市大数据研究院](http://www.sribd.cn/)对此项目提供的大力支持。
-```
