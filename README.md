@@ -213,13 +213,15 @@ bash generate_answers.sh
 ```
 
 Step 2: 计算得分
+CMB-Exampaper:
 ```
-bash score_exam.sh # 医疗模型能力测评数据集
-bash score_test.sh # 真题测评数据集
+bash score_exam.sh # Exam数据集
 ```
+CMB-test:
+将**Step 1**的输出文件提交至cmedbenchmark@163.com，我们将在第一时间返回详细测评结果。
 
 ### 提交结果   
-将 [开始评测](#开始评测) 中 **Step 1** 在**测试集**的输出文件提交至xxx，我们将在第一时间更新排行榜。
+将 [开始评测](#开始评测) 中 **Step 2** 输出文件提交至cmedbenchmark@163.com，我们将在第一时间更新排行榜。
 
 
 
