@@ -108,7 +108,6 @@
 ```
 my_model:
     model_id: 'my_model'
-    system_template: "病人：{instruction}\n医生：" # system prompt，可为空字符串；如非空，则必须带有 `{instruction}` 的placeholder
     load:
         # HuggingFace模型权重文件夹
         config_dir: "path/to/full/model"
@@ -117,7 +116,7 @@ my_model:
         # llama_dir: "path/to/base"
         # lora_dir: "path/to/lora"
 
-        device: 'cuda'          # 当前仅支持cuda
+        device: 'cuda'          # 当前仅支持cuda推理
         precision: 'fp16'       # 推理精度，支持 fp16, fp32
 
     # inference解码超参,支持 transformers.GenerationConfig 的所有参数
@@ -126,49 +125,54 @@ my_model:
         min_new_tokens: 1          
         do_sample: False         
 
-    # inference batch_size
-    batch_size: 2
 ```
 
 
-### 添加模型加载代码
-Step 1: 在 `ModelLoader` 类中**添加**如下函数：
-```
-class ModelLoader():
-    def load_my_model_and_tokenizer(self):
-        config = self.config
-        model_id = self.model_id
-        assert config.get(model_id), f'{model_id} is not configured in configs/model_config.yaml'
-        load_config = config.get(model_id).load
+### 添加模型加载代码及prompt格式
+在 `workers/mymodel.py`中修改以下部分：
+1. 加载 model 和 tokenizer
+   ```
+   def load_model_and_tokenizer(self, load_config):
+        # TODO: load your model here
+        hf_model_config = {"pretrained_model_name_or_path": load_config['config_dir'],'trust_remote_code': True, 'low_cpu_mem_usage': True}
+        hf_tokenizer_config = {"pretrained_model_name_or_path": load_config['config_dir'], 'padding_side': 'left', 'trust_remote_code': True}
+        precision = load_config.get('precision', 'fp16')
+        device = load_config.get('device', 'cuda')
 
+        if precision == 'fp16':
+            hf_model_config.update({"torch_dtype": torch.float16})
 
-        # 根据需要修改
-        hf_model_config = {
-            "pretrained_model_name_or_path": load_config['config_dir'], 
-            'trust_remote_code': True, 
-            'low_cpu_mem_usage': True
-        }
-        hf_tokenizer_config = {
-            "pretrained_model_name_or_path": load_config['config_dir'], 
-            'padding_side': 'left', 
-            'trust_remote_code': True
-        }
-        model = AutoModelForCausalLM.from_pretrained(**hf_model_config).half()
+        model = AutoModelForCausalLM.from_pretrained(**hf_model_config)
         tokenizer = AutoTokenizer.from_pretrained(**hf_tokenizer_config)
-        # model = PeftModel.from_pretrained(model, load_config['lora_dir'], torch_dtype=torch.float16)
 
-        # 返回 model 和 tokenizer，注意模型需要在cpu上
-        return model, tokenizer
-```
+        model.eval()
+        return model, tokenizer # cpu
+   ```
+2. system prompt
+    ```
+    @property
+    def system_prompt(self):
+        return "你是一个人工智能助手。"
+    ```
+3. 指令模板
+    ```
+    @property
+    def instruction_template(self):
+        return self.system_prompt + '问：{instruction}\n答：' # 必须带有{instruction}的placeholder
+    ```
+4. fewshot指令模板
+    ```
+    @property
+    def instruction_template_with_fewshot(self,):
+        return self.system_prompt + '{fewshot_examples}问：{instruction}\n答：'  # 必须带有 {instruction} 和 {fewshot_examples} 的placeholder
+    ```
+5. 单轮对话模板，用于生成模型fewshot数据
+    ```
+    @property
+    def fewshot_template(self):
+        return "问：{user}\n答：{gpt}\n" # 必须带有 {user} 和 {gpt} 的placeholder
+    ```
 
-Step 2: 在 `LLMZooRunner.init_model_and_tokenizer()` 中，将
-```
-self.model, self.tokenizer, config = model_loader.load_model_and_tokenizer()
-```
-替换为
-```
-self.model, self.tokenizer, config = model_loader.load_my_model_and_tokenizer()
-```
 
 
 
@@ -194,6 +198,7 @@ accelerate launch \
     ./src/generate_answers.py \                                         # 主程序
     --model_id=$model_id \                                              # 模型ID
     --cot_flag \                                                        # 是否使用CoT prompt模板                                   
+    --batch_size \                                                      # 推理的batch size                                 
     --input_path=$test_data_path \                                      # 输入文件路径
     --output_path=./result/${task_name}/${model_id}/answers.json \      # 输出文件路径
     --model_config_path="./configs/model_config.yaml"                   # 模型配置文件路径
@@ -215,6 +220,7 @@ bash score_test.sh # 真题测评数据集
 
 ### 提交结果   
 将 [开始评测](#开始评测) 中 **Step 1** 在**测试集**的输出文件提交至xxx，我们将在第一时间更新排行榜。
+
 
 
 
