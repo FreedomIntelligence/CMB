@@ -287,7 +287,6 @@ B. {选项B}
 
 ## 😘  引用
 
-如果您使用我们的数据集，请引用我们的论文。
 ```
 @misc{llm-zoo-2023,
   title={CMB: Chinese Medical Benchmark},
@@ -297,4 +296,7 @@ B. {选项B}
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/FreedomIntelligence/CMB}},
 }
+
+## 致谢
+感谢[深圳市大数据研究院](http://www.sribd.cn/)对此项目提供的大力支持。
 ```
