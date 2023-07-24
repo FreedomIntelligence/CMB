@@ -34,10 +34,10 @@
 
 
 ## 🥸 数据集介绍
-
+![CMB](assets/CMB.png)
 ### 组成部分
 - CMB-main: 全方位多层次测评模型医疗知识;
-   - 结构: 6大项28小项，详见[目录](catalog.md);
+   - 结构: 6大项28小项，详见上图CMB-Main, [目录地址](catalog.md);
    - CMB-test: 11200道题目，每一小项400道题目; 
    - CMB-val: 280道附带详细解析的题目; Few Shot数据集;
    - CMB-train: 304743道题目; 模型医疗知识注入;
@@ -45,7 +45,7 @@
 - CME-qa: 测评复杂临床问诊能力
    - 数据: 73例复杂病例问诊;
 - CMB-exampaper: 测评模型是否通过考试
-   - 数据: 9小项，25套共6571道题目，详见[套题目录](exam-catalog.md);
+   - 数据: 9小项，25套共6571道题目，详见上图CMB-Exam, [套题目录地址](exam-catalog.md);
 
 
 ### CMB-main & CME-exampaper Item 
