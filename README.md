@@ -1,8 +1,6 @@
 # CMB Chinese-Medical-Benchmark 
 <p align="center">
-   🌐 <a href="" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">Hugging Face</a> • 📃 <a href="" target="_blank">Paper</a>  <br>  <a href="https://github.com/FreedomIntelligence/CMB">   中文</a> | <a href="">English 
-</p>
-
+   🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">Hugging Face</a>
 
 ## 🌈 更新
 
@@ -288,6 +286,13 @@ B. {选项B}
 ```
 1. 没有采用真正的多轮对话评估，而是将多轮对话转化为CoT的形式（也可以说：这样对只经过指令微调的模型更公平）
 2. 答案提取方式有bias。
+```
+
+## To do List
+```
+1. CMB-main 和 CMB-exampaper Few-shot测评结果。
+2. CMB-qa测评结果。
+3. 公开论文报告。
 ```
 
 
