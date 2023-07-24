@@ -294,7 +294,7 @@ B. {选项B}
 ## 😘  引用
 
 ```
-@misc{llm-zoo-2023,
+@misc{cmedbenchmark,
   title={CMB: Chinese Medical Benchmark},
   author={Xidong Wang*, Guiming Hardy Chen*, Dingjie Song*, Zhiyi Zhang*, Qingying Xiao, Xiangbo Wu, Feng Jiang, Jianquan Li, Benyou Wang},
   year = {2023},
