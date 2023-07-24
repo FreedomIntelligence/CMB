@@ -283,8 +283,8 @@ B. {选项B}
 ```
 
 ## 局限性
-1. 没有采用真正的多轮对话评估，而是将多轮对话转化为CoT的形式（也可以说：这样对只经过指令微调的模型更公平）
-2. 答案提取方式有bias。
+1. CMB-qa评测没有采用真正的多轮对话评估，而是将多轮对话转化为CoT的形式（也可以说：这样对只经过指令微调的模型更公平）
+2. 答案提取方式有Bias, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
 
 ## To do List
 1. CMB-main 和 CMB-exampaper Few-shot测评结果。
