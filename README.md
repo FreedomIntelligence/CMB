@@ -287,9 +287,9 @@ B. {选项B}
 2. 答案提取方式有Bias, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
 
 ## To do List
-1. CMB-main 和 CMB-exampaper Few-shot测评结果。
-2. CMB-qa测评结果。
-3. 公开发布论文报告。
+1. 发布CMB-main 和 CMB-exampaper Few-shot测评结果。
+2. 发布CMB-qa测评结果。
+3. 发布论文报告。
 
 
 ## 😘  引用
