@@ -27,7 +27,7 @@
 
 ## 🥇 排行榜
 
-我们在初始版本中进行评估的模型的zero-shot和five-shot准确率，请访问我们[官方排行榜]()了解详细结果。
+我们评估了模型的zero-shot准确率，请访问我们[官方排行榜](https://cmedbenchmark.llmzoo.com/static/leaderboard.html)了解详细结果。
 
 
 
