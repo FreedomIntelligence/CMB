@@ -27,7 +27,7 @@
 
 
 <table>
-    <tr>
+    <tr colspan="2">
         <td>二级目录</td>
     </tr>
     <tr>
