@@ -1,4 +1,5 @@
 # CMB Chinese-Medical-Benchmark 
+![CMB](assets/title.png)
 <p align="center">
    🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">Hugging Face</a>
 
@@ -33,6 +34,7 @@
 
 ## 🥸 数据集介绍
 ![CMB](assets/CMB.png)
+![CMB](assets/CMB-qa.png)
 ### 组成部分
 - CMB-main: 全方位多层次测评模型医疗知识;
    - 结构: 6大项28小项，详见上图CMB-Main, [目录地址](catalog.md);
