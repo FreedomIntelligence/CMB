@@ -16,12 +16,10 @@
   ```python
   from datasets import load_dataset
   
-  # main datasets （multiple choice）
-  main_datasets = load_dataset('FreedomIntelligence/CMB','main')
-  # exam paper datasets （multiple choice）
-  exam_datasets = load_dataset('FreedomIntelligence/CMB','exampaper')
-  # QA datasets
-  qa_datasets = load_dataset('FreedomIntelligence/CMB','qa')
+  # CMB-Exam datasets （multiple choice）
+  exam_datasets = load_dataset('FreedomIntelligence/CMB','exam')
+  # CMB-Clin datasets
+  clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
   ```
 
 
