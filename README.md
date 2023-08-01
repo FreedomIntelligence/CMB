@@ -274,8 +274,8 @@ B. {选项B}
 ```
 
 ## 局限性
-1. CMB-Clin评测是将多轮对话转化为CoT的形式（也可以说：这样对只经过指令微调的模型更公平）。
-2. 答案提取方式有Bias, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
+1. CMB-Clin评测是将多轮对话转化为CoT的形式
+2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
 
 ## To do List
 1. 发布论文报告。

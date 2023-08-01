@@ -21,7 +21,6 @@ from transformers import (
 )
 
 from peft import PeftModel
-from model_loader import ConvCollater
 from collections import defaultdict
 from constants import id2worker_class
 
