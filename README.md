@@ -33,11 +33,6 @@
 
 
 ## 🥸 数据集介绍
-<p float="left">
-  <img src="assets/CMB-Exam.png" width="50%" />
-  <img src="assets/CMB-qa.png" width="50%" /> 
-</p>
-
 ![CMB](assets/CMB-final.png)
 ### 组成部分
 - CMB-Exam: 全方位多层次测评模型医疗知识;
