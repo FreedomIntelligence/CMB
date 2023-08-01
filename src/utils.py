@@ -36,16 +36,16 @@ def get_runner_class(model_id):
 def match_choice(text, cot_flag):
     if cot_flag:
         option = ["A", "B", "C", "D", "E", "F", "G"]
-        res = re.search(r"答案(?:是|为|应该是|应该为)(.*?)(。|\.|$)", text, re.S)
+        res = re.search(r"(答案|正确选项)(?:是|：|为|应该是|应该为)(.*?)(。|\.|$)", text, re.S)
         if res:
-            return "".join([x for x in res.group(1) if x in option])
-        return ''.join([i for i in text if i in option])
+            return "".join([x for x in res.group(2) if x in option])
+        return "".join([i for i in text if i in option])
     else:
         option = ["A", "B", "C", "D", "E", "F", "G"]
-        res = re.search(r"答案(?:是|为|应该是|应该为)(.*?)(。|\.|$)", text, re.S)
+        res = re.search(r"(答案|正确选项)(?:是|：|为|应该是|应该为)(.*?)(。|\.|$)", text, re.S)
         if res:
-            return "".join([x for x in res.group(1) if x in option])
-        return ''.join([i for i in text if i in option])
+            return "".join([x for x in res.group(2) if x in option])
+        return "".join([i for i in text if i in option])
 
 
 def extract_ans(ans_num, output_path, cot_flag):
