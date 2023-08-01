@@ -26,7 +26,7 @@
 
 ## 🥇 Leaderboard 
 
-Check zero-shot accuracies in [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.html)。
+Please Check [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.html).
 
 
 
