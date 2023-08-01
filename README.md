@@ -33,6 +33,15 @@
 
 
 ## 🥸 数据集介绍
+<div style="display: flex;">
+  <div style="flex: 50%; padding: 5px;">
+    <img src="assets/CMB-Exam.png" alt="CMB-Exam" style="width: 100%;">
+  </div>
+  <div style="flex: 50%; padding: 5px;">
+    <img src="(assets/CMB-Exam.png" alt="CMB-Exam" style="width: 100%;">
+  </div>
+</div>
+
 ![CMB](assets/CMB-final.png)
 ![CMB](assets/CMB-qa.png)
 ![CMB](assets/CMB-Exam.png)
