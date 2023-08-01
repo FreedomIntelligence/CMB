@@ -220,7 +220,7 @@ Step 2: 计算得分
 ## ✅  CMB评测细节
 Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy Decoding。
 ### CMB-Exam Prompt
-[CMB-main Item](#cmb-main--cme-exampaper-item)
+[CMB-Exam Item](#cmb-exam-item)
 #### Answer-only Prompt
 ```
 {System_prompt}
