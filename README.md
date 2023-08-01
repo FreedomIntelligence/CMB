@@ -264,7 +264,7 @@ B. {选项B}
 ```
 
 ### CMB-Clin Prompt
-[CMB-qa Item](#cmb-qa-item) 
+[CMB-Clin Item](#cmb-clin-item) 
 ```
 {System_prompt}
 
