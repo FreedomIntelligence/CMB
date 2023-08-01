@@ -34,6 +34,8 @@
 
 ## 🥸 数据集介绍
 ![CMB](assets/CMB-final.png)
+![CMB](assets/CMB-qa.png)
+![CMB](assets/CMB-Exam.png)
 ### 组成部分
 - CMB-Exam: 全方位多层次测评模型医疗知识;
    - 结构: 6大项28小项，详见上图CMB-Exam, [目录地址](catalog.md);
