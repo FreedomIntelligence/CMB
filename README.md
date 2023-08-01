@@ -33,18 +33,12 @@
 
 
 ## 🥸 数据集介绍
-<div style="display: flex;">
-  <div style="flex: 50%; padding: 5px;">
-    <img src="assets/CMB-Exam.png" alt="CMB-Exam" style="width: 100%;">
-  </div>
-  <div style="flex: 50%; padding: 5px;">
-    <img src="assets/CMB-qa.png" alt="CMB-qa" style="width: 100%;">
-  </div>
-</div>
+<p float="left">
+  <img src="assets/CMB-Exam.png" width="50%" />
+  <img src="assets/CMB-qa.png" width="50%" /> 
+</p>
 
 ![CMB](assets/CMB-final.png)
-![CMB](assets/CMB-qa.png)
-![CMB](assets/CMB-Exam.png)
 ### 组成部分
 - CMB-Exam: 全方位多层次测评模型医疗知识;
    - 结构: 6大项28小项，详见上图CMB-Exam, [目录地址](catalog.md);
