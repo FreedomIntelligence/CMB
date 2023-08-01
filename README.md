@@ -3,16 +3,16 @@
 <p align="center">
    🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">Hugging Face</a>
 
-## 🌈 更新
+## 🌈 Update
 
-* **[2023.08.01]** 🎉🎉🎉 CMB公开！感谢支持~🎉🎉🎉
+* **[2023.08.01]** 🎉🎉🎉 CMB becomes public！🎉🎉🎉
 
 
 
-## 🌐 数据下载
+## 🌐 Download
 
-- 方法一：直接下载使用[zip压缩文件](https://github.com/FreedomIntelligence/CMB/tree/main/data)
-- 方法二：使用[Hugging Face datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB)直接加载数据集 示例如下:
+- Approach 1：Directly download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data)
+- Or  Approach 2：Check [Hugging Face datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
   ```python
   from datasets import load_dataset
   
@@ -24,13 +24,13 @@
 
 
 
-## 🥇 排行榜
+## 🥇 Leaderboard 
 
-我们评估了模型的zero-shot准确率，请访问我们[官方排行榜](https://cmedbenchmark.llmzoo.com/static/leaderboard.html)了解详细结果。
+Check zero-shot accuracies in [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.html)。
 
 
 
-## 🥸 数据集介绍
+## 🥸 Introduction to our dataset
 ![CMB](assets/CMB-final.png)
 ### 组成部分
 - CMB-Exam: 全方位多层次测评模型医疗知识;
