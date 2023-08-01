@@ -33,22 +33,19 @@
 
 
 ## 🥸 数据集介绍
-![CMB](assets/CMB.png)
-![CMB](assets/CMB-qa.png)
+![CMB](assets/CMB-final.png)
 ### 组成部分
-- CMB-main: 全方位多层次测评模型医疗知识;
-   - 结构: 6大项28小项，详见上图CMB-Main, [目录地址](catalog.md);
+- CMB-Exam: 全方位多层次测评模型医疗知识;
+   - 结构: 6大项28小项，详见上图CMB-Exam, [目录地址](catalog.md);
    - CMB-test: 11200道题目，每一小项400道题目; 
    - CMB-val: 280道附带详细解析的题目; Few Shot数据集;
    - CMB-train: 269359道题目; 模型医疗知识注入;
     
-- CME-qa: 测评复杂临床问诊能力
+- CME-Clin: 测评复杂临床问诊能力
    - 数据: 74例复杂病例问诊; 详见上图示例；
-- CMB-exampaper: 测评模型是否通过考试
-   - 数据: 9小项，25套共6571道题目，详见上图CMB-Exam, [套题目录地址](exam-catalog.md);
 
 
-### CMB-main & CME-exampaper Item 
+### CMB-Exam Item 
 ```json
 {
     "exam_type": "医师考试",
@@ -71,7 +68,7 @@
 - exam_subject: 具体科室或细分学科分类; 
 - question_type: 只有"单项选择题"和"多项选择题";
 
-### CMB-qa Item 
+### CMB-Clin Item 
 ```json
 {
     "id": "0",
@@ -181,8 +178,7 @@ my_model:
 
 ```
 # # 输入文件路径
-# test_data_path='./data/CMB-main/CMB-test/CMB-test-choice-question-merge.json'   # 医疗模型能力测评数据集
-# test_data_path='./data/CMB-test-exampaper/CMB-test-exam-merge.json'             # 真题测评数据集
+# test_data_path='./data/CMB-Exam/CMB-test/CMB-test-choice-question-merge.json'   # 医疗模型能力测评数据集
 # test_data_path='./data/CMB-test-qa/CMB-test-qa.json'                            # 真实病例诊断能力测评数据集
 
 
@@ -213,22 +209,17 @@ bash generate_answers.sh
 ```
 
 Step 2: 计算得分
-CMB-Exampaper:
-```
-bash score_exam.sh # Exam数据集
-```
-CMB-test:
 将**Step 1**的输出文件提交至cmedbenchmark@163.com，我们将在第一时间返回详细测评结果。
 
 ### 提交结果   
-将 [开始评测](#开始评测) 中 **Step 2** 输出文件提交至cmedbenchmark@163.com，我们将在第一时间更新排行榜。
+我们将在 [开始评测](#开始评测) **Step 2** 中确认是否公开结果，同意公开后我们将在第一时间更新排行榜。
 
 
 
 
 ## ✅  CMB评测细节
 Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy Decoding。
-### CMB Test & Train & Exampaper Prompt
+### CMB-Exam Prompt
 [CMB-main Item](#cmb-main--cme-exampaper-item)
 #### Answer-only Prompt
 ```
@@ -272,7 +263,7 @@ B. {选项B}
 <{Role_2}>：
 ```
 
-### CMB-qa Prompt
+### CMB-Clin Prompt
 [CMB-qa Item](#cmb-qa-item) 
 ```
 {System_prompt}
@@ -285,13 +276,11 @@ B. {选项B}
 ```
 
 ## 局限性
-1. CMB-qa评测没有采用真正的多轮对话评估，而是将多轮对话转化为CoT的形式（也可以说：这样对只经过指令微调的模型更公平）
+1. CMB-Clin评测是将多轮对话转化为CoT的形式，详见[CMB-Clin Prompt](#cmb-clin-prompt)（也可以说：这样对只经过指令微调的模型更公平）。
 2. 答案提取方式有Bias, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
 
 ## To do List
-1. 发布CMB-main 和 CMB-exampaper Few-shot测评结果。
-2. 发布CMB-qa测评结果。
-3. 发布论文报告。
+1. 发布论文报告。
 
 
 ## 😘  引用
