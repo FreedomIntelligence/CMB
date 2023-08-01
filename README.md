@@ -286,8 +286,8 @@ B. {选项B}
 ```
 @misc{cmedbenchmark,
   title={CMB: Chinese Medical Benchmark},
-  author={Xidong Wang, Guiming Hardy Chen, Dingjie Song, Zhiyi Zhang, Qingying Xiao, Xiangbo Wu, Feng Jiang, Jianquan Li, Benyou Wang},
-  note={Authors Xidong Wang, Guiming Hardy Chen, Dingjie Song and Zhiyi Zhang contributed equally to this work.},
+  author={Xidong Wang*, Guiming Hardy Chen*, Dingjie Song*, Zhiyi Zhang*, Qingying Xiao*, Xiangbo Wu, Feng Jiang, Jianquan Li, Benyou Wang},
+  note={Authors Xidong Wang, Guiming Hardy Chen, Dingjie Song, Zhiyi Zhang and Qingying Xiao contributed equally to this work.},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
