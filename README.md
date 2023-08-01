@@ -38,7 +38,7 @@
     <img src="assets/CMB-Exam.png" alt="CMB-Exam" style="width: 100%;">
   </div>
   <div style="flex: 50%; padding: 5px;">
-    <img src="(assets/CMB-Exam.png" alt="CMB-Exam" style="width: 100%;">
+    <img src="assets/CMB-qa.png" alt="CMB-qa" style="width: 100%;">
   </div>
 </div>
 
