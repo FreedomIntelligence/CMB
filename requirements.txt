@@ -1,3 +1,6 @@
 transformers_stream_generator
-accelerate==0.18.0
-
+torch>=1.13.0
+accelerate>=0.18.0
+peft>=0.3.0
+transformers>=4.31.0.dev0
+tqdm
