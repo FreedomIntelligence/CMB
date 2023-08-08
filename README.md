@@ -9,9 +9,12 @@
 
 
 
-## 🌐 Download
+## 🌐 Download Data
 
-- Download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data)
+- Download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data):
+    ```bash
+    git clone "https://github.com/FreedomIntelligence/CMB.git" && cd CMB && unzip "./data/CMB.zip" -d "./data/" && rm "./data/CMB.zip"
+    ```
 - Or Check out [HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
   ```python
   from datasets import load_dataset
