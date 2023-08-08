@@ -283,7 +283,6 @@ Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy D
 You can configure hyperparameters for generation in `./configs/model_config.yaml`. We find that a lower temperature often gives higher performance for most models. However, the effects of other hyperparams are not clear.
 
 
-
 ### Modify answer matching strategy
 You can modify the `match_choice()` function in `src/utils.py`. The output patterns of different models vary, which makes it hard for us to consider all cases for all models using a single regular expression. If you find a better matching strategy for those evaluated models in our paper, please submit your results for updates.
 
