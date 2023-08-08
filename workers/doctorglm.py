@@ -2,11 +2,6 @@
 from .base import *
 
 
-
-
-
-
-
 class DoctorGLMWorker(BaseWorker):       
 
 

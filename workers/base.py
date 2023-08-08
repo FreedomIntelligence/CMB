@@ -6,7 +6,14 @@ from accelerate import Accelerator
 from dataclasses import dataclass
 from accelerate import Accelerator
 from copy import deepcopy
-from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModel
+
+from peft import PeftModel
+from transformers import (
+    AutoModel, AutoModelForCausalLM, 
+    AutoTokenizer, LlamaTokenizer,
+    AutoConfig,
+    
+)
 
 
 @dataclass
