@@ -5,6 +5,7 @@ import json
 from accelerate import Accelerator
 from dataclasses import dataclass
 from accelerate import Accelerator
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModel
 
 
 @dataclass
