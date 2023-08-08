@@ -11,7 +11,7 @@
 
 ## 🌐 Download Data
 
-- Download the [zip file](https://github.com/FreedomIntelligence/CMB/tree/main/data) and unzip:
+- (Recommended) Download the [zip file](https://github.com/FreedomIntelligence/CMB/tree/main/data) and unzip:
     ```bash
     git clone "https://github.com/FreedomIntelligence/CMB.git" && cd CMB && unzip "./data/CMB.zip" -d "./data/" && rm "./data/CMB.zip"
     ```
@@ -228,9 +228,10 @@ bash generate_fewshot.sh
 </details>
 
 
-### Modify the main script `generate_answers.sh`
+### Modify the main script 
 <details><summary>Click to expand</summary>
 
+`generate_answers.sh`:
 ```
 # # input file path
 # data_path='data/CMB-Exam/CMB-test/CMB-test-choice-question-merge.json'   
@@ -368,5 +369,11 @@ Please use the following citation if you intend to use our dataset for training 
 }
 ```
 
-## 致谢
-感谢[深圳市大数据研究院](http://www.sribd.cn/)对此项目提供的大力支持。
+## Acknowledgement 
+- We thank [Shenzhen Research Institute of Big Data](http://www.sribd.cn/) for their enormous support for this project.
+
+- We thank the following doctors for participating in the human evaluation of CMB-Clin:
+    
+    - 林士军 (香港中文大学（深圳）附属第二医院)
+    - 常河
+    - 许晓爽
