@@ -4,6 +4,8 @@ import random
 import os
 
 from constants import id2worker_class
+from tqdm import tqdm
+import pdb
 
 
 query_prompt_1 = "以下是中国{exam_type}中{exam_class}考试的一道{question_type}，请分析每个选项，并最后给出答案。\n{question}\n{option_str}"
@@ -16,7 +18,8 @@ def get_output_path(args):
         os.makedirs(args.output_dir, exist_ok=True)
     
     cot_or_a = 'cot' if args.use_cot else 'a'
-    output_path = f'CMB-Exam-{cot_or_a}-{args.model_id}.json'
+    f_name = f'CMB-Exam-{cot_or_a}-{args.model_id}.json'
+    output_path = os.path.join(args.output_dir, f_name)
     return output_path
 
 def select_items(exam_type, exam_class, num):
@@ -28,7 +31,7 @@ def select_items(exam_type, exam_class, num):
     ]
     # Check if we have enough items
     if len(filtered_data) < num:
-        raise ValueError(f"Not enough items matching the given criteria:")
+        raise ValueError(f"Not enough items matching the given criteria: {exam_type}, {exam_class}")
 
     # Select a random sample of items
     selected_items = random.sample(filtered_data, num)
@@ -49,7 +52,7 @@ def get_query(da, use_cot):
 
 
 def main(args):
-    output_path = args.output_path
+    output_path = get_output_path(args)
     with open(args.test_path, "r", encoding="utf-8") as f:
         data_test = json.load(f)
 
@@ -62,7 +65,7 @@ def main(args):
         ],
         generate_fewshot_examples_only=True,
     )
-    for item in data_test:
+    for item in tqdm(data_test):
         # select examples
         samples = select_items(
             item["exam_type"], item["exam_class"], args.n_shot

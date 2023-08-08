@@ -2,8 +2,9 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ))
 
-from workers.huatuo import HuatuoWorker
+# from workers.huatuo import HuatuoWorker
 from workers.huatuo_chat import HuatuoChatWorker
+from workers.baichuanchat import BaichuanChatWorker
 from workers.bentsao import BentsaoWorker
 from workers.doctorglm import DoctorGLMWorker
 from workers.bianque_v2 import BianQueV2Worker
@@ -13,7 +14,8 @@ from workers.medicalgpt import MedicalGPTWorker
 from workers.mymodel import MyModelWorker
 
 id2worker_class = {
-    'huatuo': HuatuoWorker,
+    # 'huatuo': HuatuoWorker,
+    'baichuan-13b-chat': BaichuanChatWorker,
     'huatuo-chat': HuatuoChatWorker,
     'bentsao': BentsaoWorker,
     'doctorglm': DoctorGLMWorker,

@@ -122,3 +122,14 @@ medicalgpt:
         min_new_tokens: 1          
         do_sample: False         
 
+
+baichuan-13b-chat:
+    model_id: 'baichuan-13b-chat'
+    load:
+        config_dir: "/mntcephfs/data/med/guimingchen/models/general/baichuan-13b-chat"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False

@@ -18,7 +18,6 @@
 - Or Check out [HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
   ```python
   from datasets import load_dataset
-  
   # CMB-Exam datasets （multiple-choice and multiple-answer questions）
   exam_datasets = load_dataset('FreedomIntelligence/CMB','exam')
   # CMB-Clin datasets
@@ -128,9 +127,10 @@ my_model:
 ```
 </details>
 
-### Modify `workers/mymodel.py`
+### Modify model worker
 <details><summary>Click to expand</summary>
 
+In `workers/mymodel.py`:
 1. load model and tokenizer to cpu
    ```
    def load_model_and_tokenizer(self, load_config):
@@ -198,6 +198,34 @@ my_model:
 </details>
 
 
+
+### Generate fewshot examples (required if using fewshot)
+<details><summary>Click to expand</summary>
+
+Modify `generate_fewshot.sh`:
+```bash
+model_id="baichuan-13b-chat"
+n_shot=3
+
+test_path=data/CMB-Exam/CMB-test/CMB-test-choice-question-merge.json 
+val_path=data/CMB-Exam/CMB-val/CMB-val-merge.json
+output_dir=data/fewshot
+python ./src/generate_fewshot.py \
+--use_cot \                     # whether to use CoT template
+--n_shot=$n_shot \
+--model_id=$model_id \
+--output_dir=$output_dir  \
+--val_path=$val_path \
+--test_path=$test_path 
+```
+
+and run:
+```bash
+bash generate_fewshot.sh
+
+```
+
+</details>
 
 
 ### Modify the main script `generate_answers.sh`
