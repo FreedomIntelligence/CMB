@@ -2,7 +2,7 @@
 huatuo:
     model_id: "huatuo"
     load:
-        config_dir: "/mntcephfs/data/med/zhanghongbo/yaojishi/ckpts/baichuan_all-book-tiku-pretrain_sft_v5_reverse_clean/latest_tfmr"
+        config_dir: "./models/latest_tfmr"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -14,7 +14,7 @@ huatuo:
 huatuo-chat: # the public version on HF 
     model_id: "huatuo-chat"
     load:
-        config_dir: "/mntcephfs/data/med/zhanghongbo/download_huatuogpt_7b"
+        config_dir: "./models/download_huatuogpt_7b"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -27,8 +27,8 @@ huatuo-chat: # the public version on HF
 doctorglm:
     model_id: 'doctorglm'
     load:
-        config_dir: /mntcephfs/data/med/zhanghongbo/chatglm-6b
-        prefix_config_dir: /mntcephfs/data/med/zhanghongbo/DoctorGLM/Doctor_GLM/ckpt/ptuningv2/ptuningv2/pytorch_model.bin
+        config_dir: ./models/chatglm-6b
+        prefix_config_dir: ./models/DoctorGLM/Doctor_GLM/ckpt/ptuningv2/ptuningv2/pytorch_model.bin
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -41,8 +41,8 @@ doctorglm:
 bentsao:
     model_id: "bentsao"
     load:
-        llama_dir: "/mntcephfs/data/med/zhihong/workspace/chimera/llama_hf_7b" # huggingface llama
-        lora_dir: "/mntcephfs/data/med/zhanghongbo/Huatuo-Llama-Med-Chinese/lora-llama-med"
+        llama_dir: "./models/llama_hf_7b" # huggingface llama
+        lora_dir: "./models/Huatuo-Llama-Med-Chinese/lora-llama-med"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -60,7 +60,7 @@ bentsao:
 bianque-v2:
     model_id: 'bianque-v2'
     load:
-        config_dir: "/mntcephfs/data/med/guimingchen/models/med/bianque-2"
+        config_dir: "./models/bianque-2"
         device: 'cuda'          # ['cuda', 'cpu', 'mps']
         precision: 'fp16'
     generation_config: # pass any huggingface generation configs here
@@ -73,7 +73,7 @@ bianque-v2:
 chatglm-med:
     model_id: 'chatglm-med'
     load:
-        config_dir: "/mntcephfs/data/med/guimingchen/models/med/ChatGLM-Med"
+        config_dir: "./models/ChatGLM-Med"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -86,8 +86,8 @@ chatglm-med:
 qizhen-cama-13b: # qizhen-13b
     model_id: 'qizhen-cama-13b'
     load:
-        llama_dir: "/mntcephfs/data/med/guimingchen/models/med/zhixi-13b"
-        lora_dir: "/mntcephfs/data/med/guimingchen/models/med/qizhen-lora"
+        llama_dir: "./models/zhixi-13b"
+        lora_dir: "./models/qizhen-lora"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -100,8 +100,8 @@ qizhen-cama-13b: # qizhen-13b
 chatmed-consult:
     model_id: 'chatmed-consult'
     load:
-        llama_dir: "/mntcephfs/data/med/guimingchen/models/general/chinese-llama-alpaca-plus-lora-7b"
-        lora_dir: "/mntcephfs/data/med/guimingchen/models/med/chatmed-consult"
+        llama_dir: "./models/chinese-llama-alpaca-plus-lora-7b"
+        lora_dir: "./models/chatmed-consult"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -114,7 +114,7 @@ chatmed-consult:
 medicalgpt:
     model_id: 'medicalgpt'
     load:
-        config_dir: "/mntcephfs/data/med/guimingchen/models/med/medicalgpt"
+        config_dir: "./models/medicalgpt"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
@@ -126,7 +126,7 @@ medicalgpt:
 baichuan-13b-chat:
     model_id: 'baichuan-13b-chat'
     load:
-        config_dir: "/mntcephfs/data/med/guimingchen/models/general/baichuan-13b-chat"
+        config_dir: "./models/baichuan-13b-chat"
         device: 'cuda'        
         precision: 'fp16'
     generation_config: 
