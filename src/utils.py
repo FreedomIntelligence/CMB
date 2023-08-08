@@ -1,26 +1,15 @@
 import sys
-sys.path.append('./src')
-from typing import Union, List
+
+sys.path.append("./src")
 
 from transformers import AutoModel, AutoModelForCausalLM
 from transformers import GenerationConfig
-import torch
 import re
 
-import logging
 import pdb
-import torch
-from torch.utils.data import Dataset, DataLoader
 import json
-from accelerate import Accelerator
 
-from transformers import (
-    AutoTokenizer, AutoModelForCausalLM, AutoModel, 
-    LlamaTokenizer, LlamaForCausalLM,
-    AutoConfig,
-)
 
-from peft import PeftModel
 from collections import defaultdict
 from constants import id2worker_class
 
@@ -28,9 +17,10 @@ from constants import id2worker_class
 def get_runner_class(model_id):
     cls = id2worker_class.get(model_id, None)
     if cls is None:
-        print(f'{model_id} is not registered in src/constants.py')
+        print(f"{model_id} is not registered in src/constants.py")
         exit(1)
     return cls
+
 
 def match_choice(text, cot_flag):
     if cot_flag:
@@ -49,7 +39,7 @@ def match_choice(text, cot_flag):
 
 def extract_ans(ans_num, output_path, cot_flag):
     datas = []
-    with open(output_path, encoding='utf-8') as f:
+    with open(output_path, encoding="utf-8") as f:
         for l in f:
             datas.append(json.loads(l))
 
@@ -72,9 +62,11 @@ def extract_ans(ans_num, output_path, cot_flag):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(datas, f, ensure_ascii=False, indent=4)
 
+
 def make_output_dir(fp):
     import os
-    dir = '/'.join(fp.split('/')[:-1])
+
+    dir = "/".join(fp.split("/")[:-1])
     if not os.path.isdir(dir):
         os.makedirs(dir, exist_ok=True)
-
+    print(f"output to {dir}")

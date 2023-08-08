@@ -1,30 +1,11 @@
-from typing import Union, List
-
-from transformers import AutoModel, AutoModelForCausalLM
-from transformers import GenerationConfig
-import torch
-import re
-
-import logging
 import pdb
 import torch
 from torch.utils.data import Dataset, DataLoader
 import json
 from accelerate import Accelerator
-
-from transformers import (
-    AutoTokenizer, AutoModelForCausalLM, AutoModel, 
-    LlamaTokenizer, LlamaForCausalLM,
-    AutoConfig,
-)
-
-from peft import PeftModel
-from copy import deepcopy
-from omegaconf import OmegaConf
 from dataclasses import dataclass
-
-from typing import Any
 from accelerate import Accelerator
+
 
 @dataclass
 class BaseWorker():
@@ -41,7 +22,7 @@ class BaseWorker():
     use_fewshot: bool = False,
 
     def __post_init__(self):
-        if self.generate_fewshot_examples_only: # no need to do post init if we only need to generate fewshot examples
+        if self.generate_fewshot_examples_only: # no need to do post_init if we only need to generate fewshot examples
             return
         self.print_in_main(f'loading config: {self.cfg.load}')
         self.model, self.tokenizer = self.load_model_and_tokenizer(self.cfg.load)
@@ -63,8 +44,8 @@ class BaseWorker():
     def from_config(
         cls, 
         cfg, 
-        input_pth: str = './data',
-        output_pth: str = './result',
+        input_pth: str = '',
+        output_pth: str = '',
         batch_size = 1,
         use_qa = False, 
         use_cot = False,
@@ -178,37 +159,26 @@ class BaseWorker():
             self.writer.close()
     
     @torch.no_grad()
-    def generate_batch(self, batch: dict, return_raw=False):
+    def generate_batch(self, batch: list):
         r"""
         Args:
-            batch (`List[str]`):
+            batch (`List[dict]`):
                 a list of raw data.
         Returns:
             outputs (`List[str]`):
                 a list of generated output from the model.
         Usage:
-            LLMZooModel.generate(prompts)
+            runner.generate(prompts)
         """
 
         if self.use_qa:
             batch, lines = self.prompt_wrapper.wrap_conv(batch) 
         else:
-            batch, lines = self.prompt_wrapper.wrap(batch, return_raw=return_raw) 
-        # if self.accelerator.is_main_process:
-        #     print('---------wrapped----------')
-        #     print(batch[-1])
+            batch, lines = self.prompt_wrapper.wrap(batch) 
         inputs = self.tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(self.device)
-        # pdb.set_trace()
         self.prompt_wrapper.lengths = inputs.input_ids.shape[1]
         outputs = self.unwrap_model().generate( **inputs, **self.generation_config)
-        # pdb.set_trace()
-        # outputs = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
         outputs = self.prompt_wrapper.unwrap(outputs, self.generation_config.get('num_return_sequences', 1))
-        # pdb.set_trace()
-        # if self.accelerator.is_main_process:
-            # print_n = 3
-            # for o in outputs[:print_n]:
-            #     print(o)
         
         return outputs, lines
 
@@ -271,10 +241,6 @@ class BaseWorker():
     
 
 
-
-
-
-
 class PromptWrapper():
     def __init__(
             self, 
@@ -284,9 +250,7 @@ class PromptWrapper():
             use_cot=False
     ):
 
-        # self.system_template = self.get_system_template(system_template.strip())
         self.instruction_template = instruction_template
-        # few_shot_examples = f'{few_shot_examples}\n' if few_shot_examples else ''
 
         self.question_template = self.get_question_template(use_cot=use_cot)
 
@@ -317,7 +281,7 @@ class PromptWrapper():
         else:
             return "以下是中国{exam_type}中{exam_class}考试的一道{question_type}，不需要做任何分析和解释，直接输出答案选项。\n{question}\n{option_str}"
 
-    def wrap(self, data: list[dict], return_raw=False):
+    def wrap(self, data: list[dict]):
         '''
         data.keys(): ['id', 'exam_type', 'exam_class', 'question_type', 'question', 'option']. These are the raw data.
         We still need 'option_str'.
@@ -334,7 +298,6 @@ class PromptWrapper():
             res.append(query)
             lines.append(line)
         
-        # self.lengths = lengths
         return res, lines
     
     def wrap_conv(self, data: list[dict]): # add
@@ -357,17 +320,14 @@ class PromptWrapper():
         batch_return = []
         responses_list = []
         for i in range(len(outputs)):
-            sample_idx = i // num_return_sequences
+            # sample_idx = i // num_return_sequences
             output = outputs[i][self.lengths: ] # slicing on token level
             output = self.tokenizer.decode(output, skip_special_tokens=True)
-            # output = self.additional_step(output)
 
             batch_return.append(output)
             if i % num_return_sequences == num_return_sequences - 1:
                 responses_list.append(batch_return)
                 batch_return = []
-        # print('response list', responses_list)
-        # print('br', batch_return); exit()
         return responses_list
 
 

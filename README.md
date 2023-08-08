@@ -11,12 +11,12 @@
 
 ## 🌐 Download
 
-- Approach 1：Directly download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data)
-- Or  Approach 2：Check [HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
+- Download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data)
+- Or Check out [HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
   ```python
   from datasets import load_dataset
   
-  # CMB-Exam datasets （multiple choice）
+  # CMB-Exam datasets （multiple-choice and multiple-answer questions）
   exam_datasets = load_dataset('FreedomIntelligence/CMB','exam')
   # CMB-Clin datasets
   clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
@@ -30,12 +30,12 @@ Please Check [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.h
 
 
 
-## 🥸 Introduction to our dataset
+## 🥸 Dataset intro
 ![CMB](assets/CMB-2.svg)
-### 组成部分
+### Components
 
 - CMB-Exam: Comprehensive multi-level assessment for medical knowledge
-   - Structure: 6 major categories and 28 subcategories, [View Catalog](catalog.md);
+   - Structure: 6 major categories and 28 subcategories, [View Catalog](catalog.md)
    - CMB-test: 400 questions per subcategories, 11200 questions in total
    - CMB-val: 280 questions with solutions and explanations; used as source for CoT and few-shot
    - CMB-train: 269359 questions for medical knowledge injection
@@ -202,8 +202,8 @@ my_model:
 
 ```
 # # input file path
-# test_data_path='CMB-Exam/CMB-test/CMB-test-choice-question-merge.json'   # 医疗模型能力测评数据集
-# test_data_path='CMB-Clin/CMB-Clin-qa.json'                            # 真实病例诊断能力测评数据集
+# data_path='data/CMB-Exam/CMB-test/CMB-test-choice-question-merge.json'   
+# data_path='data/CMB-Clin/CMB-Clin-qa.json'                            
 
 task_name='Zero-test-cot'   
 port_id=27272
