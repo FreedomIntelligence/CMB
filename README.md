@@ -11,7 +11,7 @@
 
 ## 🌐 Download Data
 
-- Download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data):
+- Download the [zip file](https://github.com/FreedomIntelligence/CMB/tree/main/data) and unzip:
     ```bash
     git clone "https://github.com/FreedomIntelligence/CMB.git" && cd CMB && unzip "./data/CMB.zip" -d "./data/" && rm "./data/CMB.zip"
     ```
