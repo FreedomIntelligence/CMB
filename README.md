@@ -361,7 +361,7 @@ Please use the following citation if you intend to use our dataset for training 
 @misc{cmedbenchmark,
   title={CMB: Chinese Medical Benchmark},
   author={Xidong Wang*, Guiming Hardy Chen*, Dingjie Song*, Zhiyi Zhang*, Qingying Xiao, Xiangbo Wu, Feng Jiang, Jianquan Li, Benyou Wang},
-  note={Authors Xidong Wang, Guiming Hardy Chen, Dingjie Song, Zhiyi Zhang contributed equally to this github repo.},
+  note={Xidong Wang, Guiming Hardy Chen, Dingjie Song, and Zhiyi Zhang contributed equally to this github repo.},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
