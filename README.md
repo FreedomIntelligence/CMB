@@ -1,4 +1,4 @@
-# CMB: Comprehensive Chinese Medical Benchmark
+# CMB: A Comprehensive Chinese Medical Benchmark
 ![CMB](assets/title.png)
 <p align="center">
    🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>
