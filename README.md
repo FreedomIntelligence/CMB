@@ -1,7 +1,7 @@
 # CMB: A Comprehensive  Medical Benchmark in Chinese
 ![CMB](assets/title.png)
 <p align="center">
-   🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>
+   🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>   📃 <a href="https://arxiv.org/abs/2308.08833" target="_blank">Paper</a>
 
 ## 🌈 Update
 
@@ -351,11 +351,23 @@ B. {选项B}
 2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。 -->
 
 ## To do List
-1. Paper.
+1. The automatic evaluation function of the official website
 
 
 ## 😘  Citation
 Please use the following citation if you intend to use our dataset for training or evaluation:
+
+
+```
+@misc{wang2023cmb,
+      title={CMB: A Comprehensive Medical Benchmark in Chinese}, 
+      author={Xidong Wang and Guiming Hardy Chen and Dingjie Song and Zhiyi Zhang and Zhihong Chen and Qingying Xiao and Feng Jiang and Jianquan Li and Xiang Wan and Benyou Wang and Haizhou Li},
+      year={2023},
+      eprint={2308.08833},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 
 ```
 @misc{cmedbenchmark,
@@ -368,6 +380,7 @@ Please use the following citation if you intend to use our dataset for training 
   howpublished = {\url{https://github.com/FreedomIntelligence/CMB}},
 }
 ```
+
 
 ## Acknowledgement 
 - We thank [Shenzhen Research Institute of Big Data](http://www.sribd.cn/) for their enormous support for this project.
