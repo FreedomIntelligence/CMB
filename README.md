@@ -6,6 +6,7 @@
 ## 🌈 Update
 
 * **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
+* **[2023.08.21]** [Paper](https://arxiv.org/abs/2308.08833) released.
 
 
 
