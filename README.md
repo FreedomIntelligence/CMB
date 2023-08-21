@@ -24,7 +24,7 @@
   # CMB-Clin datasets
   clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
   ```
-- Or Check out [Baidu Cloud](https://pan.baidu.com/s/1Uv7PgU1gOXrD3PYhG8_opQ?pwd=j0np) with Extraction code: j0np 
+- Or Check out [Baidu Cloud](https://pan.baidu.com/s/1Uv7PgU1gOXrD3PYhG8_opQ?pwd=j0np)
 
 
 
