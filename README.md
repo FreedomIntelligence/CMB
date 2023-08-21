@@ -355,7 +355,7 @@ B. {选项B}
 1. The automatic evaluation function of the official website
 
 
-## 😘  Citation
+##  Citation
 Please use the following citation if you intend to use our dataset for training or evaluation:
 
 
