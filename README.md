@@ -24,6 +24,7 @@
   # CMB-Clin datasets
   clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
   ```
+- Or Check out BaiduYun [Link](https://pan.baidu.com/s/1Uv7PgU1gOXrD3PYhG8_opQ?pwd=j0np) Extraction code: j0np 
 
 
 
