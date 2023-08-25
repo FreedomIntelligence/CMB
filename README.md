@@ -2,7 +2,8 @@
 ![CMB](assets/title.png)
 <p align="center">
    📃 <a href="https://arxiv.org/abs/2308.08833" target="_blank">Paper</a> • 🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>  
-
+   <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English
+</p>
 ## 🌈 Update
 
 * **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
@@ -200,7 +201,13 @@ In `workers/mymodel.py`:
 </details>
 
 
-
+### Modify /src/constants.py
+```python
+from workers.mymodel import MyModelWorker # modify here
+id2worker_class = {
+"my_model": MyModelWorker,  # modify here
+}
+```
 ### Generate fewshot examples (required if using fewshot)
 <details><summary>Click to expand</summary>
 
