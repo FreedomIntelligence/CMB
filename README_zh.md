@@ -273,7 +273,7 @@ accelerate launch \
     --output_path=./result/${task_name}/${model_id}/answers.json \      # 输出文件路径
     --model_config_path="./configs/model_config.yaml"                   # 模型配置文件路径
 ```
-
+</details>
 
 ### 评测和提交结果
 <details><summary>Click to expand</summary>
