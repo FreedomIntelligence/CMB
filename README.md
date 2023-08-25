@@ -203,12 +203,15 @@ In `workers/mymodel.py`:
 
 
 ### Modify /src/constants.py
+<details><summary>Click to expand</summary>
 ```python
 from workers.mymodel import MyModelWorker # modify here
 id2worker_class = {
 "my_model": MyModelWorker,  # modify here
 }
 ```
+</details>
+
 ### Generate fewshot examples (required if using fewshot)
 <details><summary>Click to expand</summary>
 
