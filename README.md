@@ -204,6 +204,7 @@ In `workers/mymodel.py`:
 
 ### Modify /src/constants.py
 <details><summary>Click to expand</summary>
+   
 ```python
 from workers.mymodel import MyModelWorker # modify here
 id2worker_class = {
