@@ -1,37 +1,45 @@
-# CMB Chinese-Medical-Benchmark 
+# CMB: 中文综合医学基准
 ![CMB](assets/title.png)
 <p align="center">
-   🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>
+   📃 <a href="https://arxiv.org/abs/2308.08833" target="_blank">Paper</a> • 🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>  
+   <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English
+</p>
 
-## 🌈 Update
+## 🌈 更新
 
-* **[2023.08.01]** 🎉🎉🎉 CMB becomes public！🎉🎉🎉
+* **[2023.08.01]** 🎉🎉🎉 CMB公开！🎉🎉🎉
+* **[2023.08.21]** [论文](https://arxiv.org/abs/2308.08833)发表
 
 
 
-## 🌐 Download
+## 🌐 下载
 
-- Approach 1：Directly download [zip files](https://github.com/FreedomIntelligence/CMB/tree/main/data)
-- Or  Approach 2：Check [HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB) to load our data as follows:
+- (推荐)下载[zip文件](https://github.com/FreedomIntelligence/CMB/tree/main/data):
+    ```bash
+    git clone "https://github.com/FreedomIntelligence/CMB.git" && cd CMB && unzip "./data/CMB.zip" -d "./data/" && rm "./data/CMB.zip"
+    ```
+- 从[HuggingFace datasets](https://huggingface.co/datasets/FreedomIntelligence/CMB)下载数据:
   ```python
   from datasets import load_dataset
-  
-  # CMB-Exam datasets （multiple choice）
+  # CMB-Exam datasets （multiple-choice and multiple-answer questions）
   exam_datasets = load_dataset('FreedomIntelligence/CMB','exam')
   # CMB-Clin datasets
   clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
   ```
+- 从[百度云](https://pan.baidu.com/s/1Uv7PgU1gOXrD3PYhG8_opQ?pwd=j0np)下载数据
 
 
 
-## 🥇 Leaderboard 
-
-Please Check [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.html).
 
 
+## 🥇 排行榜 
 
-## 🥸 Introduction to our dataset
-![CMB](assets/CMB-final.png)
+请参见官网[Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.html).
+
+
+
+## 🥸 数据集介绍
+![CMB](assets/CMB-2.svg)
 ### 组成部分
 - CMB-Exam: 全方位多层次测评模型医疗知识;
    - 结构: 6大项28小项，详见上图CMB-Exam, [目录地址](catalog.md);
@@ -40,7 +48,7 @@ Please Check [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.h
    - CMB-train: 269359道题目; 模型医疗知识注入;
     
 - CMB-Clin: 测评复杂临床问诊能力
-   - 数据: 74例复杂病例问诊; 详见上图示例；
+   - 数据: 74例复杂病例问诊; 
 
 
 ### CMB-Exam Item 
@@ -99,36 +107,46 @@ Please Check [Leaderboard](https://cmedbenchmark.llmzoo.com/static/leaderboard.h
 ## ℹ️ 如何进行评测和提交
 
 ### 修改模型配置文件
-`configs/model_config.yaml` 示例如下：
+<details><summary>Click to expand</summary>
+
+`configs/model_config.yaml`：
 ```
 my_model:
     model_id: 'my_model'
     load:
-        # HuggingFace模型权重文件夹
+        # # HuggingFace model weights
         config_dir: "path/to/full/model"
 
-        # 使用peft加载LoRA模型
+        # # load with Peft
         # llama_dir: "path/to/base"
         # lora_dir: "path/to/lora"
 
-        device: 'cuda'          # 当前仅支持cuda推理
-        precision: 'fp16'       # 推理精度，支持 fp16, fp32
+        device: 'cuda'          # only support cuda
+        precision: 'fp16'       # 
 
-    # inference解码超参,支持 transformers.GenerationConfig 的所有参数
+    # supports all parameters in transformers.GenerationConfig
     generation_config: 
         max_new_tokens: 512     
         min_new_tokens: 1          
         do_sample: False         
-
 ```
+</details>
 
 
-### 添加模型加载代码及prompt格式
-在 `workers/mymodel.py`中修改以下部分：
-1. 加载 model 和 tokenizer
+### 修改模型worker
+
+<details><summary>Click to expand</summary>
+   
+`workers/mymodel.py` 示例如下：
+1. load model and tokenizer to cpu
    ```
    def load_model_and_tokenizer(self, load_config):
-        # TODO: load your model here
+        '''
+        Params: 
+            load_config: the `load` key in `configs/model_config.yaml`
+        Returns:
+            model, tokenizer: both on cpu
+        '''
         hf_model_config = {"pretrained_model_name_or_path": load_config['config_dir'],'trust_remote_code': True, 'low_cpu_mem_usage': True}
         hf_tokenizer_config = {"pretrained_model_name_or_path": load_config['config_dir'], 'padding_side': 'left', 'trust_remote_code': True}
         precision = load_config.get('precision', 'fp16')
@@ -143,35 +161,93 @@ my_model:
         model.eval()
         return model, tokenizer # cpu
    ```
+
 2. system prompt
     ```
     @property
     def system_prompt(self):
+        '''
+        The prompt that is prepended to every input.
+        '''
         return "你是一个人工智能助手。"
     ```
-3. 指令模板
+
+3. instruction template
     ```
     @property
     def instruction_template(self):
-        return self.system_prompt + '问：{instruction}\n答：' # 必须带有{instruction}的placeholder
+        '''
+        The template for instruction input. An '{instruction}' placeholder must be contained.
+        '''
+        return self.system_prompt + '问：{instruction}\n答：'
     ```
-4. fewshot指令模板
+
+4. instruction template with fewshot examples
     ```
     @property
     def instruction_template_with_fewshot(self,):
+        '''
+        The template for instruction input. There must be an '{instruction}' placeholder in this template.
+        '''
         return self.system_prompt + '{fewshot_examples}问：{instruction}\n答：'  # 必须带有 {instruction} 和 {fewshot_examples} 的placeholder
     ```
-5. 单轮对话模板，用于生成模型fewshot数据
+    
+5. template for each fewshot example
     ```
     @property
     def fewshot_template(self):
+        '''
+        The template for each fewshot example. Each fewshot example is concatenated and put in the `{fewshot_examples}` placeholder above.
+        There must be a `{user}` and `{gpt}` placeholder in this template.
+        '''
         return "问：{user}\n答：{gpt}\n" # 必须带有 {user} 和 {gpt} 的placeholder
     ```
+</details>
 
 
+### 修改 /src/constants.py
+<details><summary>Click to expand</summary>
+   
+```python
+from workers.mymodel import MyModelWorker # modify here
+id2worker_class = {
+"my_model": MyModelWorker,  # modify here
+}
+```
+</details>
+
+### 生成fewshot prompt (如果使用fewshot prompt)
+<details><summary>Click to expand</summary>
+
+`generate_fewshot.sh` 示例如下：
+```bash
+model_id="baichuan-13b-chat"
+n_shot=3
+
+test_path=data/CMB-Exam/CMB-test/CMB-test-choice-question-merge.json 
+val_path=data/CMB-Exam/CMB-val/CMB-val-merge.json
+output_dir=data/fewshot
+python ./src/generate_fewshot.py \
+--use_cot \                     # whether to use CoT template
+--n_shot=$n_shot \
+--model_id=$model_id \
+--output_dir=$output_dir  \
+--val_path=$val_path \
+--test_path=$test_path 
+```
+
+并运行:
+```bash
+bash generate_fewshot.sh
+
+```
+
+</details>
 
 
-### 修改运行配置文件
+### 修改运行脚本
+<details><summary>Click to expand</summary>
+
 `generate_answers.sh` 示例如下：
 
 ```
@@ -199,24 +275,30 @@ accelerate launch \
 ```
 
 
-### 开始评测
+### 评测和提交结果
+<details><summary>Click to expand</summary>
 
 Step 1: 生成回答 + 抽取答案
 ```
 bash generate_answers.sh
 ```
 
-Step 2: 计算得分
-将**Step 1**的输出文件提交至cmedbenchmark@163.com，我们将在第一时间返回详细测评结果。
-
-### 提交结果   
-我们将在 [开始评测](#开始评测) **Step 2** 中确认是否公开结果，同意公开后我们将在第一时间更新排行榜。
+Step 2: 计算得分 + 提交结果
+将**Step 1**的输出文件提交至[官网](https://cmedbenchmark.llmzoo.com/static/submit.html)并下载分数报告。如果您希望公开模型的表现，敬请将相关结果连同模型名称和机构信息发送至cmedbenchmark@163.com。我们将尽快进行审核与更新。
 
 
+</details>
+
+## 提高性能的技巧
+### 尝试不同的解码策略
+您可以在`./configs/model_config.yaml`中配置用于生成的超参数。我们发现，对于大多数模型来说，较低的温度通常会带来更高的性能。然而，其他超参数的影响尚不清楚。
+
+###修改答案匹配策略
+您可以修改`src/utils.py`中的`match_choice()`函数。 不同模型的输出模式各不相同，这使得我们很难使用单个正则表达式来考虑所有模型的所有情况。 如果您在我们的论文中为这些评估模型找到了更好的匹配策略，请提交您的结果以进行更新。
 
 
-## ✅  CMB评测细节
-Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy Decoding。
+
+## 提示格式
 ### CMB-Exam Prompt
 [CMB-Exam Item](#cmb-exam-item)
 #### Answer-only Prompt
@@ -273,15 +355,21 @@ B. {选项B}
 [n-question based on the len(QA_pairs)]
 ```
 
-## 局限性
-1. CMB-Clin评测是将多轮对话转化为CoT的形式
-2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。
 
-## To do List
-1. 发布论文报告。
+## 引用
+如果您打算使用我们的数据集进行训练或评估，请使用以下引用：
 
+```
+@misc{wang2023cmb,
+      title={CMB: A Comprehensive Medical Benchmark in Chinese}, 
+      author={Xidong Wang and Guiming Hardy Chen and Dingjie Song and Zhiyi Zhang and Zhihong Chen and Qingying Xiao and Feng Jiang and Jianquan Li and Xiang Wan and Benyou Wang and Haizhou Li},
+      year={2023},
+      eprint={2308.08833},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 
-## 😘  引用
 
 ```
 @misc{cmedbenchmark,
@@ -297,4 +385,8 @@ B. {选项B}
 ```
 
 ## 致谢
-感谢[深圳市大数据研究院](http://www.sribd.cn/)对此项目提供的大力支持。
+- 感谢[深圳市大数据研究院](http://www.sribd.cn/)对此项目提供的大力支持。
+- 我们感谢以下医生参与CMB-Clin的医生评估:
+    - 林士军 (香港中文大学（深圳）附属第二医院)
+    - 常河
+    - 许晓爽
