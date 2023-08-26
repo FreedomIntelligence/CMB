@@ -7,8 +7,8 @@
 
 ## 🌈 Update
 
-* **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
 * **[2023.08.21]** [Paper](https://arxiv.org/abs/2308.08833) released.
+* **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
 
 
 
@@ -368,13 +368,11 @@ Please use the following citation if you intend to use our dataset for training 
 
 
 ```
-@misc{wang2023cmb,
-      title={CMB: A Comprehensive Medical Benchmark in Chinese}, 
-      author={Xidong Wang and Guiming Hardy Chen and Dingjie Song and Zhiyi Zhang and Zhihong Chen and Qingying Xiao and Feng Jiang and Jianquan Li and Xiang Wan and Benyou Wang and Haizhou Li},
-      year={2023},
-      eprint={2308.08833},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{wang2023cmb,
+  title={CMB: A Comprehensive Medical Benchmark in Chinese},
+  author={Wang, Xidong and Chen, Guiming Hardy and Song, Dingjie and Zhang, Zhiyi and Chen, Zhihong and Xiao, Qingying and Jiang, Feng and Li, Jianquan and Wan, Xiang and Wang, Benyou and others},
+  journal={arXiv preprint arXiv:2308.08833},
+  year={2023}
 }
 ```
 
