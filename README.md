@@ -1,15 +1,13 @@
 # CMB Chinese-Medical-Benchmark 
-<center>
-
-![Python 3.9](https://img.shields.io/badge/Python-3.9-lightblue) ![Pytorch 1.13.0](https://img.shields.io/badge/PyTorch-1.13-lightblue) ![transformers](https://img.shields.io/badge/transformers-4.31.0.dev0%2B-lightblue) ![accelerate](https://img.shields.io/badge/accelerate-0.22-lightblue)
-</center>
-
 ![CMB](assets/title.png)
 <p align="center">
-   🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>
+   📃 <a href="https://arxiv.org/abs/2308.08833" target="_blank">Paper</a> • 🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>  
+   <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English
+</p>
 
 ## 🌈 Update
 
+* **[2023.08.21]** [Paper](https://arxiv.org/abs/2308.08833) released.
 * **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
 
 
@@ -28,6 +26,7 @@
   # CMB-Clin datasets
   clin_datasets = load_dataset('FreedomIntelligence/CMB','clin')
   ```
+- Or Check out [Baidu Cloud](https://pan.baidu.com/s/1Uv7PgU1gOXrD3PYhG8_opQ?pwd=j0np)
 
 
 
@@ -203,6 +202,16 @@ In `workers/mymodel.py`:
 </details>
 
 
+### Modify /src/constants.py
+<details><summary>Click to expand</summary>
+   
+```python
+from workers.mymodel import MyModelWorker # modify here
+id2worker_class = {
+"my_model": MyModelWorker,  # modify here
+}
+```
+</details>
 
 ### Generate fewshot examples (required if using fewshot)
 <details><summary>Click to expand</summary>
@@ -265,22 +274,19 @@ accelerate launch \
 
 
 
-### Run evaluation
+### Run evaluation and submit
 <details><summary>Click to expand</summary>
 
-Step 1: generate answers
+Step 1: generate and extract answers
 ```
 bash generate_answers.sh
 ```
 
 Step 2: score your answers
 
-Submit your output in **Step 1** to cmedbenchmark@163.com. You will be notified via email once we score your answers. We will update results to the leaderboard **only if you authorize us to do so**. Before that, your scores will be kept confidential.
+Submit your output in **Step 1** to [Submit](https://cmedbenchmark.llmzoo.com/static/submit.html) and download the score result. If you wish to disclose the performance of the model, please kindly send the relevant results along with the model's name and affiliated institution to cmedbenchmark@163.com. We will review and update promptly.
+
 </details>
-
-
-<!-- ## ✅  CMB评测细节
-Generate参数: 为了减少方差，一致将Sample设置为False进行Greedy Decoding -->
 
 
 
@@ -355,12 +361,20 @@ B. {选项B}
 1. CMB-Clin is converted to multi-turn conversation
 2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。 -->
 
-## To do List
-1. Paper.
 
 
-## 😘  Citation
+##  Citation
 Please use the following citation if you intend to use our dataset for training or evaluation:
+
+
+```
+@article{wang2023cmb,
+  title={CMB: A Comprehensive Medical Benchmark in Chinese},
+  author={Wang, Xidong and Chen, Guiming Hardy and Song, Dingjie and Zhang, Zhiyi and Chen, Zhihong and Xiao, Qingying and Jiang, Feng and Li, Jianquan and Wan, Xiang and Wang, Benyou and others},
+  journal={arXiv preprint arXiv:2308.08833},
+  year={2023}
+}
+```
 
 ```
 @misc{cmedbenchmark,
@@ -373,6 +387,7 @@ Please use the following citation if you intend to use our dataset for training 
   howpublished = {\url{https://github.com/FreedomIntelligence/CMB}},
 }
 ```
+
 
 ## Acknowledgement 
 - We thank [Shenzhen Research Institute of Big Data](http://www.sribd.cn/) for their enormous support for this project.
