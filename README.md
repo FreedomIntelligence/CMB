@@ -1,4 +1,9 @@
 # CMB Chinese-Medical-Benchmark 
+<center>
+
+![Python 3.9](https://img.shields.io/badge/Python-3.9-lightblue) ![Pytorch 1.13.0](https://img.shields.io/badge/PyTorch-1.13-lightblue) ![transformers](https://img.shields.io/badge/transformers-4.31.0.dev0%2B-lightblue) ![accelerate](https://img.shields.io/badge/accelerate-0.22-lightblue)
+</center>
+
 ![CMB](assets/title.png)
 <p align="center">
    🌐 <a href="https://cmedbenchmark.llmzoo.com/#home" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/CMB" target="_blank">HuggingFace</a>
