@@ -7,6 +7,7 @@
 
 ## 🌈 更新
 
+* **[2023.09.22]** CMB被收录于[OpenCompass](https://github.com/open-compass/opencompass)中.
 * **[2023.08.01]** 🎉🎉🎉 CMB公开！🎉🎉🎉
 * **[2023.08.21]** [论文](https://arxiv.org/abs/2308.08833)发表
 
