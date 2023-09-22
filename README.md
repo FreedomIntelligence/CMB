@@ -12,6 +12,7 @@
 
 ## 🌈 Update
 
+* **[2023.08.21]** CMB is included in [OpenCompass](https://github.com/open-compass/opencompass).
 * **[2023.08.21]** [Paper](https://arxiv.org/abs/2308.08833) released.
 * **[2023.08.01]** 🎉🎉🎉 CMB is published！🎉🎉🎉
 
