@@ -41,7 +41,7 @@ def select_items(exam_type, exam_class, num):
 
 def get_query(da, use_cot):
     da["option_str"] = "\n".join(
-        [f"{k}. {v}" for k, v in da["option"].items() if len(v) > 1]
+        [f"{k}. {v}" for k, v in da["option"].items() if len(v) > 0 and v!=" "]
     )
     if use_cot:
         query = query_prompt_1.format_map(da)
