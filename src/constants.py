@@ -11,6 +11,7 @@ from workers.bianque_v2 import BianQueV2Worker
 from workers.chatglm_med import ChatGLMMedWorker
 from workers.chatmed_consult import ChatMedConsultWorker
 from workers.medicalgpt import MedicalGPTWorker
+from workers.chatglm3_6b import ChatGLM3Worker
 from workers.mymodel import MyModelWorker
 
 id2worker_class = {
@@ -23,5 +24,6 @@ id2worker_class = {
     'chatglm-med': ChatGLMMedWorker,
     'chatmed-consult': ChatMedConsultWorker,
     'medicalgpt': MedicalGPTWorker,
+    'chatglm3_6b': ChatGLM3Worker,
     'my_model': MyModelWorker, # modify here
 } 
