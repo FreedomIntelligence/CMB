@@ -127,7 +127,7 @@ class BaseWorker():
         
         self.generation_config = config.generation_config
 
-        if not self.tokenizer.pad_token_id and self.tokenizer.eos_token_id is not None:
+        if (self.tokenizer.pad_token_id is None) and (self.tokenizer.eos_token_id is not None):
             self.print_in_main('warning: No pad_token in the config file. Setting pad_token_id to eos_token_id')
             self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
             assert self.tokenizer.pad_token_id == self.tokenizer.eos_token_id
