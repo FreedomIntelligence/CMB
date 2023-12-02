@@ -81,7 +81,16 @@ chatglm-med:
         min_new_tokens: 1          
         do_sample: False         
 
-
+chatglm3_6b:
+    model_id: 'chatglm3_6b'
+    load:
+        config_dir: "./models/chatglm3-6b"
+        device: 'cuda'        
+        precision: 'fp16'
+    generation_config: 
+        max_new_tokens: 512     
+        min_new_tokens: 1          
+        do_sample: False   
 
 qizhen-cama-13b: # qizhen-13b
     model_id: 'qizhen-cama-13b'
