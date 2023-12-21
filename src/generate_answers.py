@@ -60,18 +60,23 @@ def main(args):
     for batch_idx, batch in enumerate(dataloader_iterator, start=1):
         
         # one step to get outputs
-        response, data = runner.generate_batch(batch) 
+        response, data = runner.generate_batch(batch)
         accumulated_response.extend(response) # model responses
         accumulated_data.extend(data) # raw data
 
         # this unfortunately long code block does nothing but gathering data from all GPUs.
         if batch_idx % args.all_gather_freq == 0 or batch_idx == len(runner.dataloader):
+            
+            if dist.is_initialized():
+                all_response = [None] * dist.get_world_size()
+                all_data = [None] * dist.get_world_size()
 
-            all_data = [None] * dist.get_world_size() 
-            all_response = [None] * dist.get_world_size() 
+                dist.all_gather_object(all_response, accumulated_response)
+                dist.all_gather_object(all_data, accumulated_data)
+            else:
+                all_response = [accumulated_response, ]
+                all_data = [accumulated_data, ]
 
-            dist.all_gather_object(all_response, accumulated_response)
-            dist.all_gather_object(all_data, accumulated_data)
 
 
             all_data = [item for sublist in all_data for item in sublist]
