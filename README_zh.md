@@ -6,7 +6,7 @@
 </p>
 
 ## 🌈 更新
-
+* **[20234.01.08]** 为了方便测试，我们公开了CMB-Exam的[答案](https://github.com/FreedomIntelligence/CMB/tree/main/data)
 * **[2023.09.22]** CMB被收录于[OpenCompass](https://github.com/open-compass/opencompass)中.
 * **[2023.08.01]** 🎉🎉🎉 CMB公开！🎉🎉🎉
 * **[2023.08.21]** [论文](https://arxiv.org/abs/2308.08833)发表
