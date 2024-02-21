@@ -11,7 +11,7 @@
 </p>
 
 ## 🌈 Update
-
+* **[2024.02.21]** The [answers](https://github.com/FreedomIntelligence/CMB/tree/main/data) to the CMB-Exam test has been updated and some errors caused by omissions in version management have been fixed.
 * **[2024.01.08]** In order to facilitate testing, we disclose the [answers](https://github.com/FreedomIntelligence/CMB/tree/main/data) to the CMB-Exam test
 * **[2023.09.22]** CMB is included in [OpenCompass](https://github.com/open-compass/opencompass).
 * **[2023.08.21]** [Paper](https://arxiv.org/abs/2308.08833) released.
