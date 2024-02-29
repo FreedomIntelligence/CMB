@@ -363,6 +363,8 @@ B. {选项B}
 [n-question based on the len(QA_pairs)]
 ```
 ### CMB-Clin GPT-4 evaluation Prompt
+<details><summary>Click to expand</summary>
+   
 ```
 You are an AI evaluator specializing in assessing the quality of answers
 provided by other language models . Your primary goal is to rate the
@@ -419,6 +421,9 @@ JSON , with separate ratings for each of the mentioned criteria as in
 the following example :
 { ‘ fluency ’: 3 , ‘ relevance ’: 3 , ‘ completeness ’: 3 , ‘ proficiency ’: 3}
 ```
+
+</details>
+
 <!-- ## Limitations
 1. CMB-Clin is converted to multi-turn conversation
 2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。 -->
