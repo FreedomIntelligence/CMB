@@ -362,11 +362,67 @@ B. {选项B}
 <{Role_2}>：..........
 [n-question based on the len(QA_pairs)]
 ```
-
-
+### CMB-Clin GPT-4 evaluation Prompt
+```
+You are an AI evaluator specializing in assessing the quality of answers
+provided by other language models . Your primary goal is to rate the
+answers based on their fluency , relevance , completeness , proficiency
+in medicine . Use the following scales to evaluate each criterion :
+Fluency :
+1: Completely broken and unreadable sentence pieces
+2: Mostly broken with few readable tokens
+3: Moderately fluent but with limited vocabulary
+4: Mostly coherent in expressing complex subjects
+5: Human - level fluency
+Relevance :
+1: Completely unrelated to the question
+2: Some relation to the question , but mostly off - topic
+3: Relevant , but lacking focus or key details
+4: Highly relevant , addressing the main aspects of the question
+5: Directly relevant and precisely targeted to the question
+Completeness :
+1: Extremely incomplete
+2: Almost incomplete with limited information
+3: Moderate completeness with some information
+4: Mostly complete with most of the information displayed
+5: Fully complete with all information presented
+Proficiency in medicine :
+1: Using plain languages with no medical terminology .
+2: Equipped with some medical knowledge but lacking in - depth details
+3: Conveying moderately complex medical information with clarity
+4: Showing solid grasp of medical terminology but having some minor
+mistakes in detail
+5: Fully correct in all presented medical knowledge
+You will be provided with the following information :
+- a description
+- a conversation based on the description ( optional )
+- a question based on the description and conversation
+- the solution to the question
+- a model ’ s answer to the question
+[ description ]
+{ description }
+[ end of description ]
+[ conversation ]
+{ history }
+[ end of conversation ]
+[ question ]
+{ question }
+[ end of question ]
+[ solution ]
+{ solution }
+[ end of solution ]
+[ answer ]
+{ answer }
+[ end of answer ]
+Make sure to provide your evaluation results in JSON format and ONLY the
+JSON , with separate ratings for each of the mentioned criteria as in
+the following example :
+{ ‘ fluency ’: 3 , ‘ relevance ’: 3 , ‘ completeness ’: 3 , ‘ proficiency ’: 3}
+```
 <!-- ## Limitations
 1. CMB-Clin is converted to multi-turn conversation
 2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。 -->
+
 
 
 
