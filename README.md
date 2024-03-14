@@ -11,6 +11,7 @@
 </p>
 
 ## 🌈 Update
+* **[2024.03.14]** CMB was accepted into the **2024 NAACL Main Conference**, thanking the academic community for its recognition.
 * **[2024.02.21]** The [answers](https://github.com/FreedomIntelligence/CMB/tree/main/data) to the CMB-Exam test has been updated and some errors caused by omissions in version management have been fixed.
 * **[2024.01.08]** In order to facilitate testing, we disclose the [answers](https://github.com/FreedomIntelligence/CMB/tree/main/data) to the CMB-Exam test
 * **[2023.09.22]** CMB is included in [OpenCompass](https://github.com/open-compass/opencompass).
