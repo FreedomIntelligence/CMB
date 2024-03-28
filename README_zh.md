@@ -6,8 +6,10 @@
 </p>
 
 ## 🌈 更新
-* **[20234.01.08]** 为了方便测试，我们公开了CMB-Exam的[答案](https://github.com/FreedomIntelligence/CMB/tree/main/data)
-* **[2023.09.22]** CMB被收录于[OpenCompass](https://github.com/open-compass/opencompass)中.
+* **[2024.03.14]** CMB被**2024 NAACL**会议录用，感谢学术界的认可
+* **[2024.02.21]** CMB测试答案已更新，并修复了一些因版本管理疏漏导致的错误
+* **[2024.01.08]** 为了方便测试，我们公开了CMB-Exam的[答案](https://github.com/FreedomIntelligence/CMB/tree/main/data)
+* **[2023.09.22]** CMB被收录于[OpenCompass](https://github.com/open-compass/opencompass)中
 * **[2023.08.01]** 🎉🎉🎉 CMB公开！🎉🎉🎉
 * **[2023.08.21]** [论文](https://arxiv.org/abs/2308.08833)发表
 
@@ -47,7 +49,7 @@
    - CMB-test: 11200道题目，每一小项400道题目; 
    - CMB-val: 280道附带详细解析的题目; Few Shot数据集;
    - CMB-train: 269359道题目; 模型医疗知识注入;
-    
+   
 - CMB-Clin: 测评复杂临床问诊能力
    - 数据: 74例复杂病例问诊; 
 
@@ -137,7 +139,7 @@ my_model:
 ### 修改模型worker
 
 <details><summary>Click to expand</summary>
-   
+
 `workers/mymodel.py` 示例如下：
 1. load model and tokenizer to cpu
    ```
@@ -152,13 +154,13 @@ my_model:
         hf_tokenizer_config = {"pretrained_model_name_or_path": load_config['config_dir'], 'padding_side': 'left', 'trust_remote_code': True}
         precision = load_config.get('precision', 'fp16')
         device = load_config.get('device', 'cuda')
-
+   
         if precision == 'fp16':
             hf_model_config.update({"torch_dtype": torch.float16})
-
+   
         model = AutoModelForCausalLM.from_pretrained(**hf_model_config)
         tokenizer = AutoTokenizer.from_pretrained(**hf_tokenizer_config)
-
+   
         model.eval()
         return model, tokenizer # cpu
    ```
@@ -203,12 +205,12 @@ my_model:
         '''
         return "问：{user}\n答：{gpt}\n" # 必须带有 {user} 和 {gpt} 的placeholder
     ```
-</details>
+    </details>
 
 
 ### 修改 /src/constants.py
 <details><summary>Click to expand</summary>
-   
+
 ```python
 from workers.mymodel import MyModelWorker # modify here
 id2worker_class = {
@@ -287,7 +289,6 @@ bash generate_answers.sh
 Step 2: 计算得分 + 提交结果
 将**Step 1**的输出文件提交至[官网](https://cmedbenchmark.llmzoo.com/static/submit.html)并下载分数报告。如果您希望公开模型的表现，敬请将相关结果连同模型名称和机构信息发送至cmedbenchmark@163.com。我们将尽快进行审核与更新。
 
-
 </details>
 
 ## 提高性能的技巧
@@ -355,6 +356,75 @@ B. {选项B}
 <{Role_2}>：..........
 [n-question based on the len(QA_pairs)]
 ```
+
+### CMB-Clin GPT-4 evaluation Prompt
+
+<details><summary>Click to expand</summary>
+
+```
+You are an AI evaluator specializing in assessing the quality of answers
+provided by other language models . Your primary goal is to rate the
+answers based on their fluency , relevance , completeness , proficiency
+in medicine . Use the following scales to evaluate each criterion :
+Fluency :
+1: Completely broken and unreadable sentence pieces
+2: Mostly broken with few readable tokens
+3: Moderately fluent but with limited vocabulary
+4: Mostly coherent in expressing complex subjects
+5: Human - level fluency
+Relevance :
+1: Completely unrelated to the question
+2: Some relation to the question , but mostly off - topic
+3: Relevant , but lacking focus or key details
+4: Highly relevant , addressing the main aspects of the question
+5: Directly relevant and precisely targeted to the question
+Completeness :
+1: Extremely incomplete
+2: Almost incomplete with limited information
+3: Moderate completeness with some information
+4: Mostly complete with most of the information displayed
+5: Fully complete with all information presented
+Proficiency in medicine :
+1: Using plain languages with no medical terminology .
+2: Equipped with some medical knowledge but lacking in - depth details
+3: Conveying moderately complex medical information with clarity
+4: Showing solid grasp of medical terminology but having some minor
+mistakes in detail
+5: Fully correct in all presented medical knowledge
+You will be provided with the following information :
+- a description
+- a conversation based on the description ( optional )
+- a question based on the description and conversation
+- the solution to the question
+- a model ’ s answer to the question
+[ description ]
+{ description }
+[ end of description ]
+[ conversation ]
+{ history }
+[ end of conversation ]
+[ question ]
+{ question }
+[ end of question ]
+[ solution ]
+{ solution }
+[ end of solution ]
+[ answer ]
+{ answer }
+[ end of answer ]
+Make sure to provide your evaluation results in JSON format and ONLY the
+JSON , with separate ratings for each of the mentioned criteria as in
+the following example :
+{ ‘ fluency ’: 3 , ‘ relevance ’: 3 , ‘ completeness ’: 3 , ‘ proficiency ’: 3}
+```
+
+</details>
+
+<!-- ## 一些限制
+
+1. CMB-Clin 已变为多轮对话
+2. 答案提取方式可能不够完善, 详见[代码](https://github.com/FreedomIntelligence/CMB/blob/main/src/utils.py#L36)。 -->
+
 
 
 ## 引用
