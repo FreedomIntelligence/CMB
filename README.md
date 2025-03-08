@@ -292,7 +292,12 @@ bash generate_answers.sh
 
 Step 2: score your answers
 
-Submit your output in **Step 1** to [Submit](https://cmedbenchmark.llmzoo.com/static/submit.html) and download the score result. If you wish to disclose the performance of the model, please kindly send the relevant results along with the model's name and affiliated institution to cmedbenchmark@163.com. We will review and update promptly.
+```
+python score.py
+```
+
+
+If you wish to disclose the performance of the model, please kindly send the relevant results along with the model's name and affiliated institution to cmedbenchmark@163.com. We will review and update promptly.
 
 </details>
 
