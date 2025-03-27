@@ -292,6 +292,22 @@ bash generate_answers.sh
 
 Step 2: score your answers
 
+Answer Format
+```
+[
+    {
+        "id": 1,
+        "model_answer": "D"
+    },
+    ...
+    {
+        "id": 5,
+        "model_answer": "ABC"
+    },
+    ...
+]
+```
+
 ```
 python score.py
 ```
